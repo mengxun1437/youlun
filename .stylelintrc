@@ -1,0 +1,6 @@
+{
+  "extends": [
+    "@moresec/stylelint-config-moresec",
+    "stylelint-prettier/recommended"
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "extends": [
+    "@moresec/moresec/react",
+    "@moresec/moresec/typescript",
+    "plugin:prettier/recommended"
+  ],
+  "rules": {
+    "new-cap": [2, {
+      "capIsNew": false
+    }]
+  },
+  "parserOptions": {
+    "project": ["./tsconfig.json"]
+  }
+}

@@ -1,0 +1,79 @@
+.header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  position: fixed;
+  z-index: 2;
+  padding: 0;
+  &:global(.ant-layout-header) {
+    height: 56px;
+    line-height: 56px;
+  }
+}
+
+.left {
+  display: flex;
+  align-items: center;
+  min-width: 60px;
+  &.logo_hide {
+    .logo_wrapper {
+      display: none;
+    }
+    .icon_fold {
+      margin-left: 20px;
+    }
+  }
+}
+.logo_wrapper {
+  width: 160px;
+  text-align: center;
+}
+.icon_fold {
+  font-size: 20px;
+  color: @ms-white;
+  opacity: 0.7;
+  transition: opacity 0.3s;
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.right {
+  display: flex;
+  margin-right: 20px;
+  color: @ms-white;
+  align-items: center;
+  font-size: 16px;
+
+  .username {
+    margin-right: 10px;
+  }
+}
+
+// 水平方向 导航栏
+.horizontal_header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  position: fixed;
+  z-index: 2;
+  padding: 0 20px;
+  height: 72px;
+  .logo_wrapper {
+    width: 96px;
+    margin: 0 68px 0 0;
+  }
+}
+.inline_header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  position: fixed;
+  z-index: 2;
+  padding: 0 20px;
+  height: 64px;
+  .logo_wrapper {
+    width: 96px;
+    margin: 0 68px 0 0;
+  }
+}

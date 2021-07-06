@@ -1,0 +1,61 @@
+{
+  "private": true,
+  "name": "test",
+  "version": "1.0.0",
+  "description": "A project named test",
+  "scripts": {
+    "start": "umi dev",
+    "build": "umi build",
+    "lint:script": "eslint --fix \"src/**/*.ts\" \"src/**/*.tsx\"",
+    "lint:style": "stylelint --fix \"src/**/*.css\" \"src/**/*.less\"",
+    "lint": "yarn lint:script && yarn lint:style",
+    "submit": "svn del dist/* && echo 打包构建中... && umi build && svn add dist/* && svn ci -m 'util:html: submit-compiling' dist && echo 打包构建完毕"
+  },
+  "dependencies": {
+    "@ant-design/icons": "^4.3.0",
+    "antd": "^4.9.2",
+    "classnames": "^2.2.6",
+    "dva": "^2.6.0-beta.20",
+    "isomorphic-fetch": "^2.2.1",
+    "md5": "^2.3.0",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^11.0.0",
+    "@commitlint/config-conventional": "^11.0.0",
+    "@svgr/webpack": "^5.3.1",
+    "@types/classnames": "^2.2.10",
+    "@types/md5": "^2.2.1",
+    "@types/react": "^16.9.32",
+    "@typescript-eslint/eslint-plugin": "^4.6.1",
+    "@typescript-eslint/parser": "^4.6.1",
+    "@umijs/preset-react": "^1.4.10",
+    "babel-eslint": "^10.1.0",
+    "commitizen": "^4.2.2",
+    "cz-conventional-changelog": "^3.3.0",
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "6.2.0",
+    "eslint-plugin-prettier": "3.1.0",
+    "eslint-plugin-react": "^7.19.0",
+    "husky": "^4.3.0",
+    "stylelint": "^13.3.0",
+    "stylelint-config-prettier": "^8.0.1",
+    "stylelint-prettier": "^1.1.2",
+    "typescript": "^3.9.7",
+    "umi": "^3.2.24"
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "engines": {
+    "node": ">=10.13.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
+}
