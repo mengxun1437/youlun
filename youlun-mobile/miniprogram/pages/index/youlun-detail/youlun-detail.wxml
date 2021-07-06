@@ -1,0 +1,10 @@
+<!--miniprogram/pages/index/youlun-detail/youlun-detail.wxml-->
+<view class="youlun-detail-container">
+  <my-swiper imageList="{{swiperImageList}}"></my-swiper>
+  <view class="introduction">
+    <my-header headerName="介绍">
+    <view style="background-color: #fff"> <text>{{introduction}}</text></view>
+  </my-header>
+  </view>
+  <van-submit-bar button-text="前去预定" bind:submit="onOrder" />
+</view>

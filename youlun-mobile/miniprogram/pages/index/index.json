@@ -1,3 +1,7 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "my-list":"../../components/list/list",
+    "my-swiper":"../../components/swiper/swiper",
+    "my-header":"../../../components/header/header"
+  }
 }

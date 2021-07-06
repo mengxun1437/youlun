@@ -1,13 +1,44 @@
 {
   "pages": [
-    "pages/index/index"
+    "pages/index/index",
+    "pages/order/order",
+    "pages/mine/mine",
+    "pages/index/youlun-detail/youlun-detail",
+    "pages/index/room-list/room-list"
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "Weixin",
+    "navigationBarTitleText": "邮轮",
     "navigationBarTextStyle": "black"
   },
-  // "style": "v2",
-  "sitemapLocation": "sitemap.json"
+  "sitemapLocation": "sitemap.json",
+  "usingComponents": {
+    "van-button": "@vant/weapp/button/index"
+  },
+  "tabBar": {
+    "color": "red",
+    "selectedColor": "#d81e06",
+    "borderStyle": "white",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "预定",
+        "iconPath": "static/images/home-dark.png",
+        "selectedIconPath": "static/images/home.png"
+      },
+      {
+        "pagePath": "pages/order/order",
+        "text": "订单",
+        "iconPath": "static/images/order-dark.png",
+        "selectedIconPath": "static/images/order.png"
+      },
+      {
+        "pagePath": "pages/mine/mine",
+        "text": "我的",
+        "iconPath": "static/images/mine-dark.png",
+        "selectedIconPath": "static/images/mine.png"
+      }
+    ]
+  }
 }

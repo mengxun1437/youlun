@@ -1,0 +1,11 @@
+<!--components/list/list.wxml-->
+<view class="list-container">
+  <view class="left">
+  <image src="{{src}}"></image>
+   <view class="name">{{name}}</view>
+  </view>
+  <slot></slot>
+  <view class="right">
+      <van-button data-link="{{link}}" bindtap="onClick" type="danger" >{{linkText}}</van-button>
+  </view>
+</view>

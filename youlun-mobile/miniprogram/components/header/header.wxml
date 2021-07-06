@@ -1,0 +1,9 @@
+<!--components/header/header.wxml-->
+<view class="header-container">
+  <view class="header">
+    <span>{{headerName}}</span>
+  </view>
+  <view class="content">
+    <slot></slot>
+  </view>
+</view>
