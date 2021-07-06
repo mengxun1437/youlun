@@ -6,8 +6,10 @@ import MSIcon from '@/components/MSIcon'
 import { menuRoutesData, IRoute } from 'config/routes.config'
 import styles from '../styles/BasicSider.less'
 
-import DashboardSvg from '@/assets/icons/menu/dashboard.svg'
-import DashboardActiveSvg from '@/assets/icons/menu/dashboard_active.svg'
+import DashboardSvg from '@/assets/icons/menu/apply_overview.svg'
+import DashboardActiveSvg from '@/assets/icons/menu/overview.svg'
+
+
 import AccountSvg from '@/assets/icons/menu/account.svg'
 import AccountActiveSvg from '@/assets/icons/menu/account_active.svg'
 import HelpSvg from '@/assets/icons/menu/help.svg'
@@ -25,8 +27,8 @@ const { Sider } = Layout
 const { SubMenu, Item } = Menu
 
 const mapNameToIcon: MS.objectAny = {
-  dashboard: DashboardSvg,
-  dashboard_active: DashboardActiveSvg,
+  home: DashboardSvg,
+  home_active: DashboardActiveSvg,
   account: AccountSvg,
   account_active: AccountActiveSvg,
   rule: HelpSvg,

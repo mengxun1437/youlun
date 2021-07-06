@@ -54,7 +54,7 @@ const BasicHeader: React.FC<IProps> = props => {
             )}
           </div>
           <div className={styles.right}>
-            <span className={styles.username}>{username}</span>
+            <span className={styles.username}>{'admin'}</span>
             <LogoutOutlined title="退出登录" onClick={handleLogout} />
           </div>
         </Header>
@@ -76,7 +76,7 @@ const BasicHeader: React.FC<IProps> = props => {
             />
           </div>
           <div className={styles.right}>
-            <span className={styles.username}>{username}</span>
+            <span className={styles.username}>admin</span>
             <LogoutOutlined title="退出登录" onClick={handleLogout} />
           </div>
         </Header>

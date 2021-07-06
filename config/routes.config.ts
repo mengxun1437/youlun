@@ -16,9 +16,9 @@ export interface IRoute {
 
 export const menuRoutesData: IRoute[] = [
   {
-    path: '/dashboard',
+    path: '/home',
     title: '控制面板',
-    active: 'dashboard',
+    active: 'home',
     component: './dashboard',
     breadcrumb: '/dashboard',
     exclude: [0],
@@ -84,7 +84,7 @@ export default [
     routes: [
       {
         path: '/',
-        redirect: '/dashboard'
+        redirect: '/home'
       },
       ...menuRoutesData,
       {

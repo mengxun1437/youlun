@@ -48,7 +48,7 @@ const Login: FC<IConnectProps> = props => {
           <Item name="password" rules={[{ required: true, message: '请输入密码' }]}>
             <Input prefix={<LockOutlined />} type="password" placeholder="密码" />
           </Item>
-          <Item
+          {/* <Item
             name="verification_code"
             validateTrigger="onBlur"
             rules={[{ required: true, len: 4, message: '请输入4位长度的验证码' }]}
@@ -63,7 +63,7 @@ const Login: FC<IConnectProps> = props => {
                 onClick={getCode}
               />
             </div>
-          </Item>
+          </Item> */}
           <Item>
             <Button className={styles.submit} type="primary" htmlType="submit" loading={loading}>
               登录

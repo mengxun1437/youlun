@@ -19,7 +19,7 @@ interface IModel {
 const AppModel: IModel = {
   state: {
     collapsed: false,
-    layout: 'vertical'
+    layout: 'horizontal'
   },
 
   effects: {
