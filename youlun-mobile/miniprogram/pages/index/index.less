@@ -1,0 +1,87 @@
+.contrainer {
+  .list {
+    margin-top: 20rpx;
+    .list-item {
+      display: flex;
+      flex-direction: row;
+      margin-top: 10rpx;
+      width: 100%;
+      height: 450rpx;
+      background-color: #fff;
+
+      .list-left {
+        width: 280rpx;
+        height: 100%;
+        display: flex;
+        margin-top: 20rpx;
+        margin-left: 20rpx;
+        margin-right: 10rpx;
+        image {
+          width: 250rpx;
+          height: 370rpx;
+          border-radius: 20rpx;
+        }
+      }
+
+      .list-right {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        margin-left: 20rpx;
+        width: 100%;
+
+        .hot {
+          margin-top: 20rpx;
+          &.hot-hidden {
+            visibility: hidden;
+          }
+        }
+
+        .way {
+          width: 100%;
+          overflow: hidden;
+          font-weight: 500;
+          font-size: 35rpx;
+          margin-top: 20rpx;
+        }
+
+        .youlun {
+          color: grey;
+          font-size: 28rpx;
+          margin-top: 10rpx;
+        }
+
+        .price {
+          
+          position: absolute;
+          bottom: 160rpx;
+          font-size: 20rpx;
+          span{
+            color: red;
+          font-size: 40rpx;
+          }
+        }
+
+        .desc {
+          color: grey;
+          position: absolute;
+          bottom: 100rpx;
+          font-size: 24rpx;
+        }
+
+        .tags {
+          display: flex;
+          flex-direction: row;
+          position: absolute;
+          bottom: 50rpx;
+          van-tag {
+            margin-left: 20rpx;
+          }
+          van-tag:first-child {
+            margin-left: 0;
+          }
+        }
+      }
+    }
+  }
+}

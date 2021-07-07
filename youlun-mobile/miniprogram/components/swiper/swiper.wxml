@@ -1,6 +1,6 @@
 <!--components/swiper/swiper.wxml-->
 <view class="swiper-container">
-  <swiper autoplay="true" indicator-dots="true">
+  <swiper>
     <swiper-item wx:for="{{imageList}}" wx:key="index">
       <image src="{{item}}"></image>
     </swiper-item>

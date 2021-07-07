@@ -1,3 +1,7 @@
-.youlun-detail-container .introduction {
-  margin-top: 20rpx;
+.youlun-detail-container {
+  display: flex;
+}
+.youlun-detail-container .menu {
+  background-color: #fff;
+  width: ;
 }

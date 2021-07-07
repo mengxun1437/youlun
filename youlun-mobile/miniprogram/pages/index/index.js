@@ -18,7 +18,7 @@ Page({
       start:"2022/02/07(周一)",
       price:5096,
       tags:['第二人4折','寒假','每舱再减'],
-      link:`./youlun-detail/youlun-detail?youlunId=0`,
+      link:`./youlun-detail/youlun-detail?wayId=0`,
     },
     {
       hot:false,
@@ -29,7 +29,7 @@ Page({
       start:"2022/03/26(周六)",
       price:6025,
       tags:['赏花季','第1第2人立减','盛大首航'],
-      link:`./youlun-detail/youlun-detail?youlunId=1`,
+      link:`./youlun-detail/youlun-detail?wayId=1`,
     }]
   },
 

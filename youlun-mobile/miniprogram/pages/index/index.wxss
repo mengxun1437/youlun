@@ -48,10 +48,13 @@
   margin-top: 10rpx;
 }
 .contrainer .list .list-item .list-right .price {
-  color: red;
-  font-size: 40rpx;
   position: absolute;
   bottom: 160rpx;
+  font-size: 20rpx;
+}
+.contrainer .list .list-item .list-right .price span {
+  color: red;
+  font-size: 40rpx;
 }
 .contrainer .list .list-item .list-right .desc {
   color: grey;
