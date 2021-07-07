@@ -23,15 +23,20 @@
   border-radius: 20rpx;
 }
 .contrainer .list .list-item .list-right {
+  position: relative;
   display: flex;
   flex-direction: column;
+  margin-left: 20rpx;
+  width: 100%;
 }
 .contrainer .list .list-item .list-right .hot {
   margin-top: 20rpx;
 }
+.contrainer .list .list-item .list-right .hot.hot-hidden {
+  visibility: hidden;
+}
 .contrainer .list .list-item .list-right .way {
   width: 100%;
-  max-height: 100rpx;
   overflow: hidden;
   font-weight: 500;
   font-size: 35rpx;
@@ -40,21 +45,25 @@
 .contrainer .list .list-item .list-right .youlun {
   color: grey;
   font-size: 28rpx;
+  margin-top: 10rpx;
 }
 .contrainer .list .list-item .list-right .price {
   color: red;
   font-size: 40rpx;
-  margin-top: 20rpx;
+  position: absolute;
+  bottom: 160rpx;
 }
 .contrainer .list .list-item .list-right .desc {
   color: grey;
-  margin-top: 20rpx;
+  position: absolute;
+  bottom: 100rpx;
   font-size: 24rpx;
 }
 .contrainer .list .list-item .list-right .tags {
   display: flex;
   flex-direction: row;
-  margin-top: 20rpx;
+  position: absolute;
+  bottom: 50rpx;
 }
 .contrainer .list .list-item .list-right .tags van-tag {
   margin-left: 20rpx;

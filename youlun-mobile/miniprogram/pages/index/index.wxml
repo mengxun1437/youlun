@@ -2,23 +2,27 @@
 <view class="contrainer">
   <my-swiper imageList="{{swiperImageList}}"></my-swiper>
   <view class="list">
-      <view wx:for="{{youlunList}}" wx:key="index" class="list-item">
+    <view wx:for="{{youlunList}}" wx:key="index" class="list-item" data-link="{{item.link}}" bindtap="onClick">
       <view class="list-left">
-       <image src="{{item.src}}"></image>
+        <image src="{{item.src}}"></image>
       </view>
-      
-       <view class="list-right">
-        <van-tag class="hot"  wx:if="{{item.hot}}" type="danger"><van-icon name="fire" />热门航线</van-tag>
-       <view class="way">{{item.name}}</view>
-       <view class="youlun">{{item.youlun}}</view>
-       <view class="price">￥{{item.price}}</view>
-       <view class="desc">
-        <van-icon name="send-gift" />{{item.duration}} | {{item.start}} 出发
-       </view>
-       <view class="tags">
-       <van-tag  wx:for="{{item.tags}}" wx:key="index" round type="warning">{{item}}</van-tag>
-       </view>
-       </view>
+
+      <view class="list-right">
+        <view class="hot {{item.hot?'':'hot-hidden'}}">
+          <van-tag type="danger">
+            <van-icon name="fire" />热门航线
+          </van-tag>
+        </view>
+        <view class="way">{{item.name}}</view>
+        <view class="youlun">{{item.youlun}}</view>
+        <view class="price">￥{{item.price}}</view>
+        <view class="desc">
+          <van-icon name="send-gift" />{{item.duration}} | {{item.start}} 出发
+        </view>
+        <view class="tags">
+          <van-tag wx:for="{{item.tags}}" wx:key="index" round type="warning">{{item}}</van-tag>
+        </view>
       </view>
+    </view>
   </view>
 </view>

@@ -37,4 +37,13 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {},
+
+  onClick:function(e){
+    const url = e.currentTarget.dataset.link
+    if(!url) return
+
+    wx.navigateTo({
+      url:url,
+    })
+  }
 });
