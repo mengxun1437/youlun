@@ -1,19 +1,73 @@
-/**index.wxss**/
-.userinfo {
+.contrainer .list {
+  margin-top: 20rpx;
+}
+.contrainer .list .list-item {
+  display: flex;
+  flex-direction: row;
+  margin-top: 10rpx;
+  width: 100%;
+  height: 450rpx;
+  background-color: #fff;
+}
+.contrainer .list .list-item .list-left {
+  width: 280rpx;
+  height: 100%;
+  display: flex;
+  margin-top: 20rpx;
+  margin-left: 20rpx;
+  margin-right: 10rpx;
+}
+.contrainer .list .list-item .list-left image {
+  width: 250rpx;
+  height: 370rpx;
+  border-radius: 20rpx;
+}
+.contrainer .list .list-item .list-right {
+  position: relative;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  color: #aaa;
+  margin-left: 20rpx;
+  width: 100%;
 }
-
-.userinfo-avatar {
+.contrainer .list .list-item .list-right .hot {
+  margin-top: 20rpx;
+}
+.contrainer .list .list-item .list-right .hot.hot-hidden {
+  visibility: hidden;
+}
+.contrainer .list .list-item .list-right .way {
+  width: 100%;
   overflow: hidden;
-  width: 128rpx;
-  height: 128rpx;
-  margin: 20rpx;
-  border-radius: 50%;
+  font-weight: 500;
+  font-size: 35rpx;
+  margin-top: 20rpx;
 }
-
-.usermotto {
-  margin-top: 200px;
+.contrainer .list .list-item .list-right .youlun {
+  color: grey;
+  font-size: 28rpx;
+  margin-top: 10rpx;
+}
+.contrainer .list .list-item .list-right .price {
+  color: red;
+  font-size: 40rpx;
+  position: absolute;
+  bottom: 160rpx;
+}
+.contrainer .list .list-item .list-right .desc {
+  color: grey;
+  position: absolute;
+  bottom: 100rpx;
+  font-size: 24rpx;
+}
+.contrainer .list .list-item .list-right .tags {
+  display: flex;
+  flex-direction: row;
+  position: absolute;
+  bottom: 50rpx;
+}
+.contrainer .list .list-item .list-right .tags van-tag {
+  margin-left: 20rpx;
+}
+.contrainer .list .list-item .list-right .tags van-tag:first-child {
+  margin-left: 0;
 }

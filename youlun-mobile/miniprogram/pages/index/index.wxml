@@ -1,23 +1,28 @@
-<!--index.wxml-->
-<view class="container">
-  <view class="userinfo">
-    <block wx:if="{{canIUseOpenData}}">
-      <view class="userinfo-avatar" bindtap="bindViewTap">
-        <open-data type="userAvatarUrl"></open-data>
+<!-- miniprogram/pages/index/index.wxml -->
+<view class="contrainer">
+  <my-swiper imageList="{{swiperImageList}}"></my-swiper>
+  <view class="list">
+    <view wx:for="{{youlunList}}" wx:key="index" class="list-item" data-link="{{item.link}}" bindtap="onClick">
+      <view class="list-left">
+        <image src="{{item.src}}"></image>
       </view>
-      <open-data type="userNickName"></open-data>
-    </block>
-    <block wx:elif="{{!hasUserInfo}}">
-      <button wx:if="{{canIUseGetUserProfile}}" bindtap="getUserProfile"> 获取头像昵称 </button>
-      <button wx:elif="{{canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
-      <view wx:else> 请使用1.4.4及以上版本基础库 </view>
-    </block>
-    <block wx:else>
-      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-    </block>
-  </view>
-  <view class="usermotto">
-    <text class="user-motto">{{motto}}</text>
+
+      <view class="list-right">
+        <view class="hot {{item.hot?'':'hot-hidden'}}">
+          <van-tag type="danger">
+            <van-icon name="fire" />热门航线
+          </van-tag>
+        </view>
+        <view class="way">{{item.name}}</view>
+        <view class="youlun">{{item.youlun}}</view>
+        <view class="price">￥{{item.price}}</view>
+        <view class="desc">
+          <van-icon name="send-gift" />{{item.duration}} | {{item.start}} 出发
+        </view>
+        <view class="tags">
+          <van-tag wx:for="{{item.tags}}" wx:key="index" round type="warning">{{item}}</van-tag>
+        </view>
+      </view>
+    </view>
   </view>
 </view>
