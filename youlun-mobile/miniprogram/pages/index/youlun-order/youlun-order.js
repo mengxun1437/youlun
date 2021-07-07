@@ -1,4 +1,4 @@
-// miniprogram/pages/index/room-list/room-list.js
+// {{page}}.js
 Page({
 
   /**

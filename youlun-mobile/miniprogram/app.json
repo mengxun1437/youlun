@@ -1,10 +1,10 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/index/youlun-detail/youlun-detail",
     "pages/order/order",
     "pages/mine/mine",
-    "pages/index/youlun-detail/youlun-detail",
-    "pages/index/room-list/room-list"
+    "pages/index/youlun-order/youlun-order"
   ],
   "window": {
     "backgroundTextStyle": "light",

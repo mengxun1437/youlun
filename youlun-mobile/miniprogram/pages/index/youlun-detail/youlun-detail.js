@@ -8,17 +8,128 @@ Page({
     swiperImageList: [
       "../../static/images/home.png"
     ],
-    wayInfo:{
-      hot:true,
-      name: `上海-冲绳-八重山诸岛-上海-上海`,
-      youlun:`海洋光谱号`,
-      src: "https://resource.rcclchina.com.cn/000neo/1026/%E5%86%B2%E7%BB%B3-%E7%8E%BB%E7%92%83%E5%BA%95%E8%88%B9.jpg",
-      duration:"6天5晚",
-      start:"2022/02/07(周一)",
-      price:5096,
-      tags:['第二人4折','寒假','每舱再减'],
-      link:`./youlun-detail/youlun-detail?youlunId=0`,
-    },
+    rooms:[
+      {
+        type:"内舱房",
+        list:[
+          {
+            roomId:'1',
+            name:'101',
+            area:18.4,
+            hasFloor:true,
+            price:5618,
+            src:'https://resource.rcclchina.com.cn/000neo/Port/Okinaw/Okinaw-pc-2.jpg',
+            peopleNum:3
+          },
+          {
+            roomId:'2',
+            name:'102',
+            area:17.2,
+            hasFloor:true,
+            price:5991,
+            src:'https://resource.rcclchina.com.cn/000neo/Port/Okinaw/Okinaw-pc-2.jpg',
+            peopleNum:1
+          },{
+          roomId:'1',
+          name:'101',
+          area:18.4,
+          hasFloor:true,
+          price:5618,
+          src:'https://resource.rcclchina.com.cn/000neo/Port/Okinaw/Okinaw-pc-2.jpg',
+          peopleNum:3
+        },
+        {
+          roomId:'2',
+          name:'102',
+          area:17.2,
+          hasFloor:true,
+          price:5991,
+          src:'https://resource.rcclchina.com.cn/000neo/Port/Okinaw/Okinaw-pc-2.jpg',
+          peopleNum:1
+        },
+        {
+          roomId:'3',
+          name:'103',
+          area:19.5,
+          hasFloor:false,
+          price:6038,
+          src:'https://resource.rcclchina.com.cn/000neo/Port/Okinaw/Okinaw-pc-2.jpg',
+          peopleNum:2
+        }]
+      },
+      {
+        type:"海景房",
+        list:[{
+          roomId:'4',
+          name:'201',
+          area:18.4,
+          hasFloor:true,
+          price:5618,
+          src:'https://resource.rcclchina.com.cn/000neo/Port/Okinaw/Okinaw-pc-2.jpg',
+          peopleNum:2
+        },
+        {
+          roomId:'5',
+          name:'202',
+          area:17.2,
+          hasFloor:true,
+          price:5991,
+          src:'https://resource.rcclchina.com.cn/000neo/Port/Okinaw/Okinaw-pc-2.jpg',
+          peopleNum:4
+        }]
+      },
+      {
+        type:"阳台房",
+        list:[{
+          roomId:'6',
+          name:'301',
+          area:18.4,
+          hasFloor:true,
+          price:5618,
+          src:'https://resource.rcclchina.com.cn/000neo/Port/Okinaw/Okinaw-pc-2.jpg',
+          peopleNum:6
+        },
+        {
+          roomId:'7',
+          name:'302',
+          area:17.2,
+          hasFloor:true,
+          price:5991,
+          src:'https://resource.rcclchina.com.cn/000neo/Port/Okinaw/Okinaw-pc-2.jpg',
+          peopleNum:2
+        },
+        {
+          roomId:'8',
+          name:'303',
+          area:19.5,
+          hasFloor:true,
+          price:6038,
+          src:'https://resource.rcclchina.com.cn/000neo/Port/Okinaw/Okinaw-pc-2.jpg',
+          peopleNum:5
+        },
+        {
+          roomId:'9',
+          name:'303',
+          area:19.5,
+          hasFloor:true,
+          price:6038,
+          src:'https://resource.rcclchina.com.cn/000neo/Port/Okinaw/Okinaw-pc-2.jpg',
+          peopleNum:1
+        }]
+      },
+      {
+        type:"套房",
+        list:[{
+          roomId:'10',
+          name:'401',
+          area:18.4,
+          hasFloor:true,
+          price:5618,
+          src:'https://resource.rcclchina.com.cn/000neo/Port/Okinaw/Okinaw-pc-2.jpg',
+          peopleNum:2
+        }]
+      }
+    ]
   },
 
   onLoad: function (options) {
@@ -27,9 +138,13 @@ Page({
     });
   },
 
-  onOrder:function(){
+
+  onClick:function(e){
+    console.log(e)
+    const roomId = e.currentTarget.dataset.roomid;
+    if(!roomId) return
     wx.navigateTo({
-      url: `../room-list/room-list?wayId=${this.data.options.wayId}`,
+      url: `../youlun-order/youlun-order?roomId=${roomId}`,
     })
   }
 });

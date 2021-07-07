@@ -1,4 +1,3 @@
 # ignore文件，忽略不需要的文件，以防合并时两个分支文件冲突
 */vscode
 */node_modules
-youlun-mobile/**/*.less

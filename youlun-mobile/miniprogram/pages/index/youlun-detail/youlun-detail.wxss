@@ -1,7 +1,56 @@
-.youlun-detail-container {
+.youlun-detail-container .room {
+  margin-top: 20rpx;
+}
+.youlun-detail-container .room .content {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  padding-bottom: 100rpx;
+}
+.youlun-detail-container .room .list-item {
+  width: 90%;
+  border-radius: 10rpx;
+  height: 270rpx;
+  margin-top: 10rpx;
+  margin-left: 10rpx;
+  background-color: #fff;
+  display: flex;
+  flex-direction: row;
+  position: relative;
+}
+.youlun-detail-container .room .list-item .left {
+  width: 250rpx;
+  height: 100%;
   display: flex;
 }
-.youlun-detail-container .menu {
-  background-color: #fff;
-  width: ;
+.youlun-detail-container .room .list-item .left image {
+  width: 200rpx;
+  height: 200rpx;
+  border-radius: 10rpx;
+  margin-top: 20rpx;
+  margin-left: 20rpx;
+}
+.youlun-detail-container .room .list-item .right .grey-info {
+  margin-top: 20rpx;
+  font-size: 25rpx;
+  color: dimgrey;
+}
+.youlun-detail-container .room .list-item .right .name {
+  font-size: 34rpx;
+  font-weight: 600;
+  margin-top: 20rpx;
+}
+.youlun-detail-container .room .list-item .right .price {
+  position: absolute;
+  bottom: 50rpx;
+}
+.youlun-detail-container .room .list-item .right .price span {
+  color: red;
+  font-size: 40rpx;
+}
+.youlun-detail-container .room .list-item .right van-stepper {
+  position: absolute;
+  bottom: 30rpx;
 }

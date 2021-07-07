@@ -2,9 +2,24 @@
 <view class="youlun-detail-container">
   <my-swiper imageList="{{swiperImageList}}"></my-swiper>
 
-  <view class="menu">
-  
-  </view>
-
-  <van-submit-bar price="{{123410}}" button-text="前去预定" bind:submit="onOrder" />
+    <view class="room">
+      <van-tabs animated>
+        <van-tab wx:for="{{rooms}}" wx:key="index" title="{{item.type}}">
+          <view class="content">
+            <view class="list-item" wx:for="{{item.list}}" data-roomid="{{item.roomId}}" wx:key="index" bindtap="onClick">
+              <view class="left">
+                <image src="{{item.src}}"></image>
+              </view>
+              <view class="right">
+                <view class="grey-info">{{item.area}}m² | <span wx:if="{{item.hasFloor}}">有</span>
+                  <span wx:else>无</span>阳台 | {{item.peopleNum}}人间
+                </view>
+                <view class="name">{{item.name}}</view>
+                <view class="price"><span>￥{{item.price}}</span></view>
+              </view>
+            </view>
+          </view>
+        </van-tab>
+      </van-tabs>
+    </view>
 </view>
