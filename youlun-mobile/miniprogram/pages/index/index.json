@@ -1,7 +1,7 @@
 {
   "usingComponents": {
-    "my-list":"../../components/list/list",
     "my-swiper":"../../components/swiper/swiper",
-    "my-header":"../../../components/header/header"
+    "van-tag": "@vant/weapp/tag/index",
+    "van-icon": "@vant/weapp/icon/index"
   }
 }

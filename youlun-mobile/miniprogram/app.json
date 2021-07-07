@@ -17,7 +17,7 @@
     "van-button": "@vant/weapp/button/index"
   },
   "tabBar": {
-    "color": "red",
+    "color": "black",
     "selectedColor": "#d81e06",
     "borderStyle": "white",
     "list": [

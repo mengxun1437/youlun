@@ -1,7 +1,6 @@
 {
   "usingComponents": {
     "my-swiper":"../../../components/swiper/swiper",
-    "van-submit-bar": "@vant/weapp/submit-bar/index",
-    "my-header":"../../../components/header/header"
+    "van-submit-bar": "@vant/weapp/submit-bar/index"
   }
 }
