@@ -15,7 +15,7 @@
         </view>
         <view class="way">{{item.name}}</view>
         <view class="youlun">{{item.youlun}}</view>
-        <view class="price">￥{{item.price}}</view>
+        <view class="price"><span>￥{{item.price}}</span>/人起</view>
         <view class="desc">
           <van-icon name="send-gift" />{{item.duration}} | {{item.start}} 出发
         </view>
