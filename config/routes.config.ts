@@ -32,6 +32,7 @@ export const menuRoutesData: IRoute[] = [
     routes: [
       {
         path: '/account',
+        title: '账户管理',
         redirect: '/account/user',
         noShowInMenu: true
       },
@@ -39,8 +40,8 @@ export const menuRoutesData: IRoute[] = [
         path: '/account/user',
         title: '个人中心',
         active: 'account',
-        component: './account/User',
-        breadcrumb: '/user'
+        component: './account/user'
+        // breadcrumb: '/user'
       },
       {
         path: '/account/list',
