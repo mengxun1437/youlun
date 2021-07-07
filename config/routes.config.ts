@@ -25,38 +25,38 @@ export const menuRoutesData: IRoute[] = [
     wrappers: ['@/wrappers/auth']
   },
   {
-    path: '/account',
-    title: '账户管理',
+    path: '/cabinManage',
+    title: '船舱管理',
     active: 'account',
-    breadcrumb: '/account',
+    breadcrumb: '/cabinManage',
     routes: [
       {
-        path: '/account',
-        title: '账户管理',
-        redirect: '/account/user',
+        path: '/cabinManage',
+        title: '船舱管理',
+        redirect: '/cabinManage/typeList',
         noShowInMenu: true
       },
       {
-        path: '/account/user',
-        title: '个人中心',
+        path: '/cabinManage/typeList',
+        title: '船舱类型',
         active: 'account',
-        component: './account/user'
-        // breadcrumb: '/user'
+        component: './cabinManage/CabinTypeList',
+        breadcrumb: '/typeList'
       },
       {
-        path: '/account/list',
-        title: '账户列表',
+        path: '/cabinManage/infoList',
+        title: '船舱信息',
         active: 'account',
-        component: './account/List',
-        breadcrumb: '/list'
+        component: './cabinManage/CabinInfoList',
+        breadcrumb: '/infoList'
       }
     ]
   },
   {
-    path: '/rule',
-    title: '规范',
+    path: '/accountManage',
+    title: '客人管理',
     active: 'rule',
-    component: './rule'
+    component: './account'
   },
   {
     path: '/help',
