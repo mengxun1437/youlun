@@ -1,4 +1,9 @@
-"use strict";
+import {
+    getRoomInfo,
+    getWayInfo
+} from "../utils";
+const app = getApp()
+
 Page({
     data: {
         switchs: [{
@@ -26,67 +31,49 @@ Page({
         sortIndex: 0,
         activeName: '1',
 
-        orderStatusIcons:['todo-list-o','cash-back-record','home-o'],
-        showOrders:[],
-        orders: [{
-                status: 0,
+        orderStatusIcons: ['todo-list-o', 'cash-back-record', 'home-o'],
+        showOrders: [],
+        orders: []
+    },
+    onLoad: function () {
+        const orderList = app.globalData.orderList.map(order => {
+            const wayInfo = getWayInfo(order.wayId);
+            const roomInfo = getRoomInfo(order.wayId, order.roomId);
+            const date = new Date(order.created);
+            const dateFormat = `${date.getFullYear()}-${(date.getMonth() + 1).toString().padStart(2,'0')}-${date.getDate().toString().padStart(2,'0')} ${date.getHours().toString().padStart(2,'0')}:${date.getMinutes().toString().padStart(2,'0')}:${date.getSeconds().toString().padStart(2,'0')}`
+            return {
+                orderId: order.orderId,
+                status: order.status,
                 way: {
-                    name: `上海-冲绳-八重山诸岛-上海`,
-                    youlun: `海洋光谱号`,
-                    duration: "6天5晚",
-                    start: "2022/02/07(周一)",
+                    name: wayInfo.name,
+                    youlun: wayInfo.youlun,
+                    duration: wayInfo.duration,
+                    start: wayInfo.start,
                 },
                 room: {
-                    name: '302',
-                    price: 3028,
-                    users: ['小明1','小明2','小明3'],
+                    name: roomInfo.name,
+                    price: roomInfo.price,
+                    users: order.users.map(user => user.userName),
                 },
-                created:new Date('2020-01-21 10:12:19').getTime()
-            },
-            {
-                status: 1,
-                way: {
-                    name: `上海-冲绳-八重山诸岛-上海`,
-                    youlun: `海洋光谱号`,
-                    duration: "6天5晚",
-                    start: "2022/02/07(周一)",
-                    price: 5096,
-                },
-                room: {
-                    name: '302',
-                    price: 3028,
-                    users: ['340823'],
-                },
-                created:new Date('2020-02-30 10:12:19').getTime()
-            },
-            {
-                status: 2,
-                way: {
-                    name: `上海-冲绳-八重山诸岛-上海`,
-                    youlun: `海洋光谱号`,
-                    duration: "6天5晚",
-                    start: "2022/02/07(周一)",
-                    price: 5096,
-                },
-                room: {
-                    name: '302',
-                    price: 3028,
-                    users: ['340823'],
-                },
-                created:new Date('2021-01-20 10:12:19').getTime()
+                created: order.created,
+                showCreated:dateFormat
             }
-        ]
+        }).reverse()
+        this.setData({
+            showOrders: orderList,
+            orders: orderList
+        })
     },
-    onLoad: function (options) {
 
-
+    onShow() {
+        this.onLoad()
     },
 
-    onSortChange:function(e){
+    onSortChange: function (e) {
         const index = e.detail;
         this.setData({
-            sortIndex:index,
-            showOrders:this.data.showOrders.sort((x,y)=>index===0?x.created - y.created:y.created-x.created)
+            sortIndex: index,
+            showOrders: this.data.showOrders.sort((x, y) => index === 0 ? x.created - y.created : y.created - x.created)
         })
     },
 
@@ -103,10 +90,10 @@ Page({
     onSwitchChange(e) {
         const index = e.currentTarget.dataset.index;
         const status = e.detail;
-        this.data.switchs[index].status = status         
+        this.data.switchs[index].status = status
         this.setData({
             switchs: this.data.switchs,
-            showOrders:this.data.orders.filter(order=> this.data.switchs[order.status].status )
+            showOrders: this.data.orders.filter(order => this.data.switchs[order.status].status)
         })
     },
 

@@ -4,8 +4,8 @@
     "pages/order/order",
     "pages/index/youlun-order/youlun-order",
     "pages/index/youlun-detail/youlun-detail",
-    "pages/mine/mine"
-    
+    "pages/mine/mine",
+    "pages/mine/points-manage/points-manage"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -16,6 +16,7 @@
   "sitemapLocation": "sitemap.json",
   "usingComponents": {
     "my-swiper":"components/swiper/swiper",
+    "van-card": "@vant/weapp/card/index",
     "van-button": "@vant/weapp/button/index",
     "van-tag": "@vant/weapp/tag/index",
     "van-icon": "@vant/weapp/icon/index",
@@ -32,7 +33,8 @@
     "van-switch": "@vant/weapp/switch/index",
     "van-collapse": "@vant/weapp/collapse/index",
     "van-collapse-item": "@vant/weapp/collapse-item/index",
-    "van-loading": "@vant/weapp/loading/index"
+    "van-loading": "@vant/weapp/loading/index",
+    "van-toast": "@vant/weapp/toast/index"
   },
   "tabBar": {
     "color": "black",

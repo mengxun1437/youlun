@@ -1,5 +1,6 @@
+import { addOrder, getWayInfo } from "../../utils"
+
 // {{page}}.js
-const app = getApp()
 Page({
 
   /**
@@ -30,33 +31,28 @@ Page({
   },
 
   onLoad:function(options){
-    console.log(options)
-    console.log(app.globalData)
-    // const youlun = app.globalData.youlun.find(item=>item.wayId == options.wayId)
-    // const rooms = youlun.rooms.find(room =>room.list.findIndex(item=>item.roomId ==  options.roomId) !== -1)
-    // const room = rooms.list.find(room=>room.roomId = options.roomId)
-
-    console.log(youlun,rooms,room)
+    this.setData({
+      options
+    })
+    const youlun = getWayInfo(options.wayId)
+    const rooms = youlun.rooms.find(room =>room.list.findIndex(item=>item.roomId ==  options.roomId) !== -1)
+    const room = rooms.list.find(room=>room.roomId == options.roomId)
 
     this.setData({
       youlun:{
-        // name:youlun.youlun,
-        // way:youlun.name,
-        // duration:youlun.duration,
-        // start:youlun.start,
+        name:youlun.youlun,
+        way:youlun.name,
+        duration:youlun.duration,
+        start:youlun.start,
       },
       room:{
-        // type:rooms.type,
-        // name:room.name,
-        // area:room.area,
-        // peopleNum:room.peopleNum,
-        // price:room.price
+        type:rooms.type,
+        name:room.name,
+        area:room.area,
+        peopleNum:room.peopleNum,
+        price:room.price
       }
     })
-  },
-
-  onShow:function(){
-    
   },
 
 
@@ -64,6 +60,7 @@ Page({
       wx.showToast({
       title: '预定成功',
       success:()=>{
+        addOrder(this.data.options.wayId,this.data.options.roomId,this.data.roomPeopleInfo)
         setTimeout(()=>{
           wx.switchTab({
             url: '../../order/order',

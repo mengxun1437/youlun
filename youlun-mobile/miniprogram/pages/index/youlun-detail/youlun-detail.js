@@ -1,24 +1,20 @@
-// miniprogram/pages/index/youlun-detail/youlun-detail.js
-const app = getApp();
+import { getWayInfo } from "../../utils";
 Page({
   /**
    * 页面的初始数据
    */
   data: {
     options: {},
-    swiperImageList: [
-      "../../static/images/home.png"
-    ],
+    swiperImageList: [],
     rooms:[]
   },
 
   onLoad: function (options) {
-    const globalData = app.globalData
-    console.log(app.globalData)
-    console.log(options)
+    const wayInfo = getWayInfo(options.wayId)
     this.setData({
       options,
-      rooms:globalData.youlun.find((item)=>item.wayId==options.wayId).rooms
+      swiperImageList:[wayInfo.youlunSrc],
+      rooms:wayInfo.rooms
     });
   },
 

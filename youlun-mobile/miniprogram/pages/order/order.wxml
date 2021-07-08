@@ -17,6 +17,8 @@
   <van-collapse accordion value="{{ activeName }}" bind:change="onOrderChange">
     <van-collapse-item icon="{{orderStatusIcons[item.status]}}" wx:for="{{showOrders}}" wx:key="index"
       title="{{item.way.name}}" name="{{index+1}}">
+      <span>订单ID</span>
+      <view>{{item.orderId}}</view>
       <span>邮轮</span>
       <view>{{item.way.youlun}}</view>
       <span>出发时间</span>
@@ -26,13 +28,15 @@
       <span>房间号</span>
       <view>{{item.room.name}}</view>
       <span>价格</span>
-      <view>{{item.room.price}}</view>
+      <view>{{item.room.price}}元</view>
       <span>住户</span>
       <view class="users">
       <view wx:for="{{item.room.users}}" wx:key="index" class="user">
         {{item}}
       </view>
       </view>
+      <span>订单时间</span>
+      <view>{{item.showCreated}}</view>
     </van-collapse-item>
   </van-collapse>
 
