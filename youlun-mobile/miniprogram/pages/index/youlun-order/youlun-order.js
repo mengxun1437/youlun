@@ -1,66 +1,143 @@
 // {{page}}.js
+const app = getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    showModal: false,
+    showConfirmModal:false,
+    youlun:{
+      name:'',
+      way:'',
+      duration:"",
+      start:"",
+    },
+    room:{
+      type:'',
+      name:'',
+      area:0,
+      peopleNum:0,
+      price:0
+    },
+    roomPeopleInfo: [],
+    user: {
+      userName: '',
+      userNumber: '',
+      userPhone: ''
+    }
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
+  onLoad:function(options){
+    console.log(options)
+    console.log(app.globalData)
+    // const youlun = app.globalData.youlun.find(item=>item.wayId == options.wayId)
+    // const rooms = youlun.rooms.find(room =>room.list.findIndex(item=>item.roomId ==  options.roomId) !== -1)
+    // const room = rooms.list.find(room=>room.roomId = options.roomId)
 
+    console.log(youlun,rooms,room)
+
+    this.setData({
+      youlun:{
+        // name:youlun.youlun,
+        // way:youlun.name,
+        // duration:youlun.duration,
+        // start:youlun.start,
+      },
+      room:{
+        // type:rooms.type,
+        // name:room.name,
+        // area:room.area,
+        // peopleNum:room.peopleNum,
+        // price:room.price
+      }
+    })
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
+  onShow:function(){
+    
   },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
 
+  onMdodalConfirm:function(){
+      wx.showToast({
+      title: '预定成功',
+      success:()=>{
+        setTimeout(()=>{
+          wx.switchTab({
+            url: '../../order/order',
+          })
+        },2000)
+      }
+    })
   },
 
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
+  onShowConfirmModal:function(){
+    this.setData({
+      showConfirmModal:true
+    })
   },
 
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
+  onHideConfirmModal:function(){
+    this.setData({
+      showConfirmModal:false
+    })
   },
 
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
+  onDelete:function(e){
+    const index = e.currentTarget.dataset.index;
+    this.data.roomPeopleInfo.splice(index,1);
+    this.setData({
+      roomPeopleInfo:this.data.roomPeopleInfo
+    })
   },
 
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
 
+  onChange:function(e){
+    const label = e.currentTarget.dataset.label;
+    const value = e.detail
+    if(!label || !value) return 
+    switch(label){
+      case 'name':this.data.user.userName = value;break;
+      case 'number':this.data.user.userNumber = value;break;
+      case 'phone':this.data.user.userPhone = value;break;
+    }
+    this.setData({
+      user:this.data.user
+    })
   },
 
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
 
+  addUserInfo:function(){
+    const name = this.data.user.userName;
+    const number = this.data.user.userNumber;
+    const phone = this.data.user.userPhone;
+    if(!name || !number || !phone) return
+    this.data.roomPeopleInfo.push(this.data.user);
+    this.setData({
+      roomPeopleInfo:this.data.roomPeopleInfo,
+      user:{
+        userName:'',
+        userNumber:'',
+        userPhone:''
+      }
+    })
+    this.hideModal()
+  },
+
+
+  showModal: function () {
+    this.setData({
+      showModal: true
+    })
+  },
+
+
+  hideModal: function () {
+    this.setData({
+      showModal: false
+    })
   }
+
 })

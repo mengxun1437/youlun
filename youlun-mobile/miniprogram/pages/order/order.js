@@ -1,21 +1,113 @@
 "use strict";
 Page({
-    data: {},
-    onLoad: function () {
+    data: {
+        switchs: [{
+                title: '待出行',
+                status: true,
+            },
+            {
+                title: '待付款',
+                status: true,
+            }, {
+                title: '已结束',
+                status: true
+            }
+        ],
+        itemTitle: '出行状态',
+        sort: [{
+                text: '最新排序',
+                value: 0
+            },
+            {
+                text: '历史排序',
+                value: 1
+            },
+        ],
+        sortIndex: 0,
+        activeName: '1',
+
+        orderStatusIcons:['todo-list-o','cash-back-record','home-o'],
+        showOrders:[],
+        orders: [{
+                status: 0,
+                way: {
+                    name: `上海-冲绳-八重山诸岛-上海`,
+                    youlun: `海洋光谱号`,
+                    duration: "6天5晚",
+                    start: "2022/02/07(周一)",
+                },
+                room: {
+                    name: '302',
+                    price: 3028,
+                    users: ['小明1','小明2','小明3'],
+                },
+                created:new Date('2020-01-21 10:12:19').getTime()
+            },
+            {
+                status: 1,
+                way: {
+                    name: `上海-冲绳-八重山诸岛-上海`,
+                    youlun: `海洋光谱号`,
+                    duration: "6天5晚",
+                    start: "2022/02/07(周一)",
+                    price: 5096,
+                },
+                room: {
+                    name: '302',
+                    price: 3028,
+                    users: ['340823'],
+                },
+                created:new Date('2020-02-30 10:12:19').getTime()
+            },
+            {
+                status: 2,
+                way: {
+                    name: `上海-冲绳-八重山诸岛-上海`,
+                    youlun: `海洋光谱号`,
+                    duration: "6天5晚",
+                    start: "2022/02/07(周一)",
+                    price: 5096,
+                },
+                room: {
+                    name: '302',
+                    price: 3028,
+                    users: ['340823'],
+                },
+                created:new Date('2021-01-20 10:12:19').getTime()
+            }
+        ]
     },
-    onReady: function () {
+    onLoad: function (options) {
+
+
     },
-    onShow: function () {
+
+    onSortChange:function(e){
+        const index = e.detail;
+        this.setData({
+            sortIndex:index,
+            showOrders:this.data.showOrders.sort((x,y)=>index===0?x.created - y.created:y.created-x.created)
+        })
     },
-    onHide: function () {
+
+    onOrderChange(event) {
+        this.setData({
+            activeName: event.detail,
+        });
     },
-    onUnload: function () {
+
+    onConfirm() {
+        this.selectComponent('#item').toggle();
     },
-    onPullDownRefresh: function () {
+
+    onSwitchChange(e) {
+        const index = e.currentTarget.dataset.index;
+        const status = e.detail;
+        this.data.switchs[index].status = status         
+        this.setData({
+            switchs: this.data.switchs,
+            showOrders:this.data.orders.filter(order=> this.data.switchs[order.status].status )
+        })
     },
-    onReachBottom: function () {
-    },
-    onShareAppMessage: function () {
-    }
-});
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoib3JkZXIuanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyJvcmRlci50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiO0FBQ0EsSUFBSSxDQUFDO0lBS0gsSUFBSSxFQUFFLEVBRUw7SUFLRCxNQUFNO0lBRU4sQ0FBQztJQUtELE9BQU87SUFFUCxDQUFDO0lBS0QsTUFBTTtJQUVOLENBQUM7SUFLRCxNQUFNO0lBRU4sQ0FBQztJQUtELFFBQVE7SUFFUixDQUFDO0lBS0QsaUJBQWlCO0lBRWpCLENBQUM7SUFLRCxhQUFhO0lBRWIsQ0FBQztJQUtELGlCQUFpQjtJQUVqQixDQUFDO0NBQ0YsQ0FBQyxDQUFBIiwic291cmNlc0NvbnRlbnQiOlsiLy8ge3twYWdlfX0udHNcblBhZ2Uoe1xuXG4gIC8qKlxuICAgKiDpobXpnaLnmoTliJ3lp4vmlbDmja5cbiAgICovXG4gIGRhdGE6IHtcblxuICB9LFxuXG4gIC8qKlxuICAgKiDnlJ/lkb3lkajmnJ/lh73mlbAtLeebkeWQrOmhtemdouWKoOi9vVxuICAgKi9cbiAgb25Mb2FkKCkge1xuXG4gIH0sXG5cbiAgLyoqXG4gICAqIOeUn+WRveWRqOacn+WHveaVsC0t55uR5ZCs6aG16Z2i5Yid5qyh5riy5p+T5a6M5oiQXG4gICAqL1xuICBvblJlYWR5KCkge1xuXG4gIH0sXG5cbiAgLyoqXG4gICAqIOeUn+WRveWRqOacn+WHveaVsC0t55uR5ZCs6aG16Z2i5pi+56S6XG4gICAqL1xuICBvblNob3coKSB7XG5cbiAgfSxcblxuICAvKipcbiAgICog55Sf5ZG95ZGo5pyf5Ye95pWwLS3nm5HlkKzpobXpnaLpmpDol49cbiAgICovXG4gIG9uSGlkZSgpIHtcblxuICB9LFxuXG4gIC8qKlxuICAgKiDnlJ/lkb3lkajmnJ/lh73mlbAtLeebkeWQrOmhtemdouWNuOi9vVxuICAgKi9cbiAgb25VbmxvYWQoKSB7XG5cbiAgfSxcblxuICAvKipcbiAgICog6aG16Z2i55u45YWz5LqL5Lu25aSE55CG5Ye95pWwLS3nm5HlkKznlKjmiLfkuIvmi4nliqjkvZxcbiAgICovXG4gIG9uUHVsbERvd25SZWZyZXNoKCkge1xuXG4gIH0sXG5cbiAgLyoqXG4gICAqIOmhtemdouS4iuaLieinpuW6leS6i+S7tueahOWkhOeQhuWHveaVsFxuICAgKi9cbiAgb25SZWFjaEJvdHRvbSgpIHtcblxuICB9LFxuXG4gIC8qKlxuICAgKiDnlKjmiLfngrnlh7vlj7PkuIrop5LliIbkuqtcbiAgICovXG4gIG9uU2hhcmVBcHBNZXNzYWdlKCkge1xuXG4gIH1cbn0pIl19
+
+})

@@ -1,7 +1,4 @@
 {
   "usingComponents": {
-    "my-swiper":"../../components/swiper/swiper",
-    "van-tag": "@vant/weapp/tag/index",
-    "van-icon": "@vant/weapp/icon/index"
   }
 }

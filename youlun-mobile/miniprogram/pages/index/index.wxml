@@ -1,8 +1,11 @@
 <!-- miniprogram/pages/index/index.wxml -->
 <view class="contrainer">
   <my-swiper imageList="{{swiperImageList}}"></my-swiper>
-  <view class="list">
-    <view wx:for="{{youlunList}}" wx:key="index" class="list-item" data-link="{{item.link}}" bindtap="onClick">
+  <view class="loading" wx:if="{{showLoading}}">
+    <van-loading  color="#1989fa" />
+  </view>
+  <view wx:else class="list">
+    <view wx:for="{{youlunList}}" wx:key="index" class="list-item" data-wayid="{{item.wayId}}" bindtap="onClick">
       <view class="list-left">
         <image src="{{item.src}}"></image>
       </view>

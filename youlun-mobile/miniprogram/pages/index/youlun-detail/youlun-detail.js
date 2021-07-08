@@ -1,4 +1,5 @@
 // miniprogram/pages/index/youlun-detail/youlun-detail.js
+const app = getApp();
 Page({
   /**
    * 页面的初始数据
@@ -8,143 +9,25 @@ Page({
     swiperImageList: [
       "../../static/images/home.png"
     ],
-    rooms:[
-      {
-        type:"内舱房",
-        list:[
-          {
-            roomId:'1',
-            name:'101',
-            area:18.4,
-            hasFloor:true,
-            price:5618,
-            src:'https://resource.rcclchina.com.cn/000neo/Port/Okinaw/Okinaw-pc-2.jpg',
-            peopleNum:3
-          },
-          {
-            roomId:'2',
-            name:'102',
-            area:17.2,
-            hasFloor:true,
-            price:5991,
-            src:'https://resource.rcclchina.com.cn/000neo/Port/Okinaw/Okinaw-pc-2.jpg',
-            peopleNum:1
-          },{
-          roomId:'1',
-          name:'101',
-          area:18.4,
-          hasFloor:true,
-          price:5618,
-          src:'https://resource.rcclchina.com.cn/000neo/Port/Okinaw/Okinaw-pc-2.jpg',
-          peopleNum:3
-        },
-        {
-          roomId:'2',
-          name:'102',
-          area:17.2,
-          hasFloor:true,
-          price:5991,
-          src:'https://resource.rcclchina.com.cn/000neo/Port/Okinaw/Okinaw-pc-2.jpg',
-          peopleNum:1
-        },
-        {
-          roomId:'3',
-          name:'103',
-          area:19.5,
-          hasFloor:false,
-          price:6038,
-          src:'https://resource.rcclchina.com.cn/000neo/Port/Okinaw/Okinaw-pc-2.jpg',
-          peopleNum:2
-        }]
-      },
-      {
-        type:"海景房",
-        list:[{
-          roomId:'4',
-          name:'201',
-          area:18.4,
-          hasFloor:true,
-          price:5618,
-          src:'https://resource.rcclchina.com.cn/000neo/Port/Okinaw/Okinaw-pc-2.jpg',
-          peopleNum:2
-        },
-        {
-          roomId:'5',
-          name:'202',
-          area:17.2,
-          hasFloor:true,
-          price:5991,
-          src:'https://resource.rcclchina.com.cn/000neo/Port/Okinaw/Okinaw-pc-2.jpg',
-          peopleNum:4
-        }]
-      },
-      {
-        type:"阳台房",
-        list:[{
-          roomId:'6',
-          name:'301',
-          area:18.4,
-          hasFloor:true,
-          price:5618,
-          src:'https://resource.rcclchina.com.cn/000neo/Port/Okinaw/Okinaw-pc-2.jpg',
-          peopleNum:6
-        },
-        {
-          roomId:'7',
-          name:'302',
-          area:17.2,
-          hasFloor:true,
-          price:5991,
-          src:'https://resource.rcclchina.com.cn/000neo/Port/Okinaw/Okinaw-pc-2.jpg',
-          peopleNum:2
-        },
-        {
-          roomId:'8',
-          name:'303',
-          area:19.5,
-          hasFloor:true,
-          price:6038,
-          src:'https://resource.rcclchina.com.cn/000neo/Port/Okinaw/Okinaw-pc-2.jpg',
-          peopleNum:5
-        },
-        {
-          roomId:'9',
-          name:'303',
-          area:19.5,
-          hasFloor:true,
-          price:6038,
-          src:'https://resource.rcclchina.com.cn/000neo/Port/Okinaw/Okinaw-pc-2.jpg',
-          peopleNum:1
-        }]
-      },
-      {
-        type:"套房",
-        list:[{
-          roomId:'10',
-          name:'401',
-          area:18.4,
-          hasFloor:true,
-          price:5618,
-          src:'https://resource.rcclchina.com.cn/000neo/Port/Okinaw/Okinaw-pc-2.jpg',
-          peopleNum:2
-        }]
-      }
-    ]
+    rooms:[]
   },
 
   onLoad: function (options) {
+    const globalData = app.globalData
+    console.log(app.globalData)
+    console.log(options)
     this.setData({
       options,
+      rooms:globalData.youlun.find((item)=>item.wayId==options.wayId).rooms
     });
   },
 
 
   onClick:function(e){
-    console.log(e)
     const roomId = e.currentTarget.dataset.roomid;
     if(!roomId) return
     wx.navigateTo({
-      url: `../youlun-order/youlun-order?roomId=${roomId}`,
+      url: `../youlun-order/youlun-order?wayId=${this.options.wayId}&roomId=${roomId}`,
     })
   }
 });

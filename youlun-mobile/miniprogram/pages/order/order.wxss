@@ -1,1 +1,22 @@
-/* miniprogram/pages/order/order.wxss */
+van-collapse-item {
+  display: flex;
+  flex-direction: column;
+}
+van-collapse-item span {
+  color: #ff0022;
+  font-size: 20rpx;
+}
+van-collapse-item view {
+  font-size: 30rpx;
+}
+van-collapse-item view.users {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+van-collapse-item view.users .user {
+  margin-left: 20rpx;
+}
+van-collapse-item view.users .user:first-child {
+  margin-left: 0;
+}
