@@ -73,7 +73,7 @@ Page({
         const index = e.detail;
         this.setData({
             sortIndex: index,
-            showOrders: this.data.showOrders.sort((x, y) => index === 0 ? x.created - y.created : y.created - x.created)
+            showOrders: this.data.showOrders.sort((x, y) => index === 1 ? x.created - y.created : y.created - x.created)
         })
     },
 
