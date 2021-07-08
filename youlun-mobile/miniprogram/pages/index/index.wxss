@@ -1,3 +1,12 @@
+.contrainer {
+  position: relative;
+}
+.contrainer .loading {
+  position: absolute;
+  top: 600rpx;
+  left: 50%;
+  transform: translate(-50%);
+}
 .contrainer .list {
   margin-top: 20rpx;
 }

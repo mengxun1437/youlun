@@ -1,21 +1,100 @@
-"use strict";
+import {
+    getRoomInfo,
+    getWayInfo
+} from "../utils";
+const app = getApp()
+
 Page({
-    data: {},
+    data: {
+        switchs: [{
+                title: '待出行',
+                status: true,
+            },
+            {
+                title: '待付款',
+                status: true,
+            }, {
+                title: '已结束',
+                status: true
+            }
+        ],
+        itemTitle: '出行状态',
+        sort: [{
+                text: '最新排序',
+                value: 0
+            },
+            {
+                text: '历史排序',
+                value: 1
+            },
+        ],
+        sortIndex: 0,
+        activeName: '1',
+
+        orderStatusIcons: ['todo-list-o', 'cash-back-record', 'home-o'],
+        showOrders: [],
+        orders: []
+    },
     onLoad: function () {
+        const orderList = app.globalData.orderList.map(order => {
+            const wayInfo = getWayInfo(order.wayId);
+            const roomInfo = getRoomInfo(order.wayId, order.roomId);
+            const date = new Date(order.created);
+            const dateFormat = `${date.getFullYear()}-${(date.getMonth() + 1).toString().padStart(2,'0')}-${date.getDate().toString().padStart(2,'0')} ${date.getHours().toString().padStart(2,'0')}:${date.getMinutes().toString().padStart(2,'0')}:${date.getSeconds().toString().padStart(2,'0')}`
+            return {
+                orderId: order.orderId,
+                status: order.status,
+                way: {
+                    name: wayInfo.name,
+                    youlun: wayInfo.youlun,
+                    duration: wayInfo.duration,
+                    start: wayInfo.start,
+                },
+                room: {
+                    name: roomInfo.name,
+                    price: roomInfo.price,
+                    users: order.users.map(user => user.userName),
+                },
+                created: order.created,
+                showCreated:dateFormat
+            }
+        }).reverse()
+        this.setData({
+            showOrders: orderList,
+            orders: orderList
+        })
     },
-    onReady: function () {
+
+    onShow() {
+        this.onLoad()
     },
-    onShow: function () {
+
+    onSortChange: function (e) {
+        const index = e.detail;
+        this.setData({
+            sortIndex: index,
+            showOrders: this.data.showOrders.sort((x, y) => index === 0 ? x.created - y.created : y.created - x.created)
+        })
     },
-    onHide: function () {
+
+    onOrderChange(event) {
+        this.setData({
+            activeName: event.detail,
+        });
     },
-    onUnload: function () {
+
+    onConfirm() {
+        this.selectComponent('#item').toggle();
     },
-    onPullDownRefresh: function () {
+
+    onSwitchChange(e) {
+        const index = e.currentTarget.dataset.index;
+        const status = e.detail;
+        this.data.switchs[index].status = status
+        this.setData({
+            switchs: this.data.switchs,
+            showOrders: this.data.orders.filter(order => this.data.switchs[order.status].status)
+        })
     },
-    onReachBottom: function () {
-    },
-    onShareAppMessage: function () {
-    }
-});
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoib3JkZXIuanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyJvcmRlci50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiO0FBQ0EsSUFBSSxDQUFDO0lBS0gsSUFBSSxFQUFFLEVBRUw7SUFLRCxNQUFNO0lBRU4sQ0FBQztJQUtELE9BQU87SUFFUCxDQUFDO0lBS0QsTUFBTTtJQUVOLENBQUM7SUFLRCxNQUFNO0lBRU4sQ0FBQztJQUtELFFBQVE7SUFFUixDQUFDO0lBS0QsaUJBQWlCO0lBRWpCLENBQUM7SUFLRCxhQUFhO0lBRWIsQ0FBQztJQUtELGlCQUFpQjtJQUVqQixDQUFDO0NBQ0YsQ0FBQyxDQUFBIiwic291cmNlc0NvbnRlbnQiOlsiLy8ge3twYWdlfX0udHNcblBhZ2Uoe1xuXG4gIC8qKlxuICAgKiDpobXpnaLnmoTliJ3lp4vmlbDmja5cbiAgICovXG4gIGRhdGE6IHtcblxuICB9LFxuXG4gIC8qKlxuICAgKiDnlJ/lkb3lkajmnJ/lh73mlbAtLeebkeWQrOmhtemdouWKoOi9vVxuICAgKi9cbiAgb25Mb2FkKCkge1xuXG4gIH0sXG5cbiAgLyoqXG4gICAqIOeUn+WRveWRqOacn+WHveaVsC0t55uR5ZCs6aG16Z2i5Yid5qyh5riy5p+T5a6M5oiQXG4gICAqL1xuICBvblJlYWR5KCkge1xuXG4gIH0sXG5cbiAgLyoqXG4gICAqIOeUn+WRveWRqOacn+WHveaVsC0t55uR5ZCs6aG16Z2i5pi+56S6XG4gICAqL1xuICBvblNob3coKSB7XG5cbiAgfSxcblxuICAvKipcbiAgICog55Sf5ZG95ZGo5pyf5Ye95pWwLS3nm5HlkKzpobXpnaLpmpDol49cbiAgICovXG4gIG9uSGlkZSgpIHtcblxuICB9LFxuXG4gIC8qKlxuICAgKiDnlJ/lkb3lkajmnJ/lh73mlbAtLeebkeWQrOmhtemdouWNuOi9vVxuICAgKi9cbiAgb25VbmxvYWQoKSB7XG5cbiAgfSxcblxuICAvKipcbiAgICog6aG16Z2i55u45YWz5LqL5Lu25aSE55CG5Ye95pWwLS3nm5HlkKznlKjmiLfkuIvmi4nliqjkvZxcbiAgICovXG4gIG9uUHVsbERvd25SZWZyZXNoKCkge1xuXG4gIH0sXG5cbiAgLyoqXG4gICAqIOmhtemdouS4iuaLieinpuW6leS6i+S7tueahOWkhOeQhuWHveaVsFxuICAgKi9cbiAgb25SZWFjaEJvdHRvbSgpIHtcblxuICB9LFxuXG4gIC8qKlxuICAgKiDnlKjmiLfngrnlh7vlj7PkuIrop5LliIbkuqtcbiAgICovXG4gIG9uU2hhcmVBcHBNZXNzYWdlKCkge1xuXG4gIH1cbn0pIl19
+
+})

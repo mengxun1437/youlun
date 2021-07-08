@@ -26,9 +26,46 @@ page{ background: #efecf5;}
 
 .info_con1
 {
+  display: flex;
+  
+  align-items: center;
    width: 675rpx; 
-   height:180rpx;
+   height:120rpx;
    margin-top: 420rpx;  
+   margin-left: 37.5rpx;
+   background: #ffffff;
+   border-radius:15rpx; 
+   margin-bottom: 20rpx;
+   z-index: 1;
+   position: fixed;
+   color: rgb(163, 158, 158);
+}
+
+.info_con2
+{
+  display: flex;
+  
+  align-items: center;
+   width: 675rpx; 
+   height:120rpx;
+   margin-top:550rpx;  
+   margin-left: 37.5rpx;
+   background: #ffffff;
+   border-radius:15rpx; 
+   margin-bottom: 20rpx;
+   z-index: 1;
+   position: fixed;
+   color: rgb(163, 158, 158);
+}
+
+.info_con3
+{
+  display: flex;
+  
+  align-items: center;
+   width: 675rpx; 
+   height:120rpx;
+   margin-top:680rpx;  
    margin-left: 37.5rpx;
    background: #ffffff;
    border-radius:15rpx; 
@@ -43,7 +80,7 @@ page{ background: #efecf5;}
 .getPhone{
   z-index: 2;
   position: fixed;
-  margin-top: 60rpx;
+  margin-top: 100rpx;
   margin-left: 270rpx;
 }
 
@@ -83,5 +120,6 @@ page{ background: #efecf5;}
 }
 
 .icon{
+  display: inline;
   margin-left: 15rpx;
 }

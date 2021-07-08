@@ -1,10 +1,10 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/index/youlun-detail/youlun-detail",
     "pages/order/order",
-    "pages/mine/mine",
     "pages/index/youlun-order/youlun-order",
+    "pages/index/youlun-detail/youlun-detail",
+    "pages/mine/mine",
     "pages/mine/points-manage/points-manage"
   ],
   "window": {
@@ -15,10 +15,26 @@
   },
   "sitemapLocation": "sitemap.json",
   "usingComponents": {
-    "van-button": "@vant/weapp/button/index",
-    "van-icon": "@vant/weapp/icon/index",
+    "my-swiper":"components/swiper/swiper",
     "van-card": "@vant/weapp/card/index",
-    "van-dialog": "@vant/weapp/dialog/index"
+    "van-button": "@vant/weapp/button/index",
+    "van-tag": "@vant/weapp/tag/index",
+    "van-icon": "@vant/weapp/icon/index",
+    "van-cell": "@vant/weapp/cell/index",
+    "van-empty": "@vant/weapp/empty/index",
+    "van-tab": "@vant/weapp/tab/index",
+    "van-tabs": "@vant/weapp/tabs/index",
+    "van-action-sheet": "@vant/weapp/action-sheet/index",
+    "van-field": "@vant/weapp/field/index",
+    "van-swipe-cell": "@vant/weapp/swipe-cell/index",
+    "van-dialog": "@vant/weapp/dialog/index",
+    "van-dropdown-menu": "@vant/weapp/dropdown-menu/index",
+    "van-dropdown-item": "@vant/weapp/dropdown-item/index",
+    "van-switch": "@vant/weapp/switch/index",
+    "van-collapse": "@vant/weapp/collapse/index",
+    "van-collapse-item": "@vant/weapp/collapse-item/index",
+    "van-loading": "@vant/weapp/loading/index",
+    "van-toast": "@vant/weapp/toast/index"
   },
   "tabBar": {
     "color": "black",

@@ -1,0 +1,22 @@
+van-collapse-item{
+  display: flex;
+  flex-direction: column;
+  span{
+    color: rgb(255, 0, 34);
+    font-size: 20rpx;
+  }
+  view{
+    font-size: 30rpx;
+   &.users{
+     display: flex;
+     flex-direction: row;
+     flex-wrap: wrap;
+     .user{
+       margin-left: 20rpx;
+     }
+     .user:first-child{
+       margin-left: 0;
+     }
+   }
+  }
+}

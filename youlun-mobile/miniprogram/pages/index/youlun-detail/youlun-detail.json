@@ -1,7 +1,5 @@
 {
+  "navigationBarTitleText":"房间列表",
   "usingComponents": {
-    "my-swiper":"../../../components/swiper/swiper",
-    "van-tab": "@vant/weapp/tab/index",
-    "van-tabs": "@vant/weapp/tabs/index"
   }
 }

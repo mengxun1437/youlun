@@ -1,0 +1,136 @@
+.container {
+
+  .cell {
+    margin-top: 20rpx;
+    display: flex;
+    flex-direction: column;
+    .desc-title{
+      margin-left: 10px;
+      color: grey;
+      font-size: 30rpx;
+    }
+
+    text{
+     margin-left: 20rpx; 
+    }
+  }
+  .cell:first-child{
+    margin-top: 0;
+  }
+
+  .add-container {
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;
+
+
+
+    van-button {
+
+      button {
+        width: 500rpx;
+      }
+    }
+
+    .buttons {
+      background-color: #fff;
+      position: fixed;
+      height: 200rpx;
+      bottom: 0;
+      width: 100%;
+
+      .add-button {
+        position: absolute;
+        top: 15rpx;
+        left: 50%;
+        transform: translate(-50%);
+      }
+
+      .order-button {
+        position: absolute;
+        top: 100rpx;
+        left: 50%;
+        transform: translate(-50%);
+      }
+    }
+
+    van-action-sheet {
+      .modal {
+        height: 500rpx;
+        display: flex;
+        flex-direction: column;
+        justify-items: center;
+        align-items: center;
+
+        van-field {
+          width: 90%;
+
+          van-cell {
+
+            margin-top: 50rpx;
+          }
+        }
+      }
+
+      .add-commit {
+        position: fixed;
+        bottom: 50rpx;
+      }
+
+    }
+
+
+    .list-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      padding-bottom: 220rpx;
+
+      van-swipe-cell {
+        width: 100%;
+
+        .delete {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          background-color: red;
+          width: 280rpx;
+          height: 320rpx;
+          color: white;
+        }
+
+        .list-item {
+          width: 100%;
+          background-color: #fff;
+          display: flex;
+          flex-direction: column;
+          margin-top: 15rpx;
+          border-radius: 15rpx;
+
+          span {
+            color: grey;
+            font-size: 20rpx;
+            margin-top: 15rpx;
+          }
+
+          .item {
+            margin-top: 10rpx;
+          }
+        }
+      }
+    }
+  }
+
+  van-dialog{
+    .modal-content{
+      width: 90%;
+      height: 200rpx;
+      line-height: 200rpx;
+      text-align: center;
+      margin: auto;
+    }
+  }
+}

@@ -1,1 +1,104 @@
-/* {{page}}.wxss */
+.container .cell {
+  margin-top: 20rpx;
+  display: flex;
+  flex-direction: column;
+}
+.container .cell .desc-title {
+  margin-left: 10px;
+  color: grey;
+  font-size: 30rpx;
+}
+.container .cell text {
+  margin-left: 20rpx;
+}
+.container .cell:first-child {
+  margin-top: 0;
+}
+.container .add-container {
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  align-items: center;
+}
+.container .add-container van-button button {
+  width: 500rpx;
+}
+.container .add-container .buttons {
+  background-color: #fff;
+  position: fixed;
+  height: 200rpx;
+  bottom: 0;
+  width: 100%;
+}
+.container .add-container .buttons .add-button {
+  position: absolute;
+  top: 15rpx;
+  left: 50%;
+  transform: translate(-50%);
+}
+.container .add-container .buttons .order-button {
+  position: absolute;
+  top: 100rpx;
+  left: 50%;
+  transform: translate(-50%);
+}
+.container .add-container van-action-sheet .modal {
+  height: 500rpx;
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  align-items: center;
+}
+.container .add-container van-action-sheet .modal van-field {
+  width: 90%;
+}
+.container .add-container van-action-sheet .modal van-field van-cell {
+  margin-top: 50rpx;
+}
+.container .add-container van-action-sheet .add-commit {
+  position: fixed;
+  bottom: 50rpx;
+}
+.container .add-container .list-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding-bottom: 220rpx;
+}
+.container .add-container .list-container van-swipe-cell {
+  width: 100%;
+}
+.container .add-container .list-container van-swipe-cell .delete {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: red;
+  width: 280rpx;
+  height: 320rpx;
+  color: white;
+}
+.container .add-container .list-container van-swipe-cell .list-item {
+  width: 100%;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  margin-top: 15rpx;
+  border-radius: 15rpx;
+}
+.container .add-container .list-container van-swipe-cell .list-item span {
+  color: grey;
+  font-size: 20rpx;
+  margin-top: 15rpx;
+}
+.container .add-container .list-container van-swipe-cell .list-item .item {
+  margin-top: 10rpx;
+}
+.container van-dialog .modal-content {
+  width: 90%;
+  height: 200rpx;
+  line-height: 200rpx;
+  text-align: center;
+  margin: auto;
+}
