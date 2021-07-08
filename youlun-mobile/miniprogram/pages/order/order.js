@@ -56,7 +56,7 @@ Page({
                     users: order.users.map(user => user.userName),
                 },
                 created: order.created,
-                showCreated:dateFormat
+                showCreated: dateFormat
             }
         }).reverse()
         this.setData({
@@ -67,6 +67,32 @@ Page({
 
     onShow() {
         this.onLoad()
+    },
+
+    onOrderCancel: function (e) {
+        const orderId = e.currentTarget.dataset.orderid;
+        if (!orderId) return
+        app.globalData.orderList.splice(app.globalData.orderList.findIndex(item => item.orderId === orderId), 1)
+
+        wx.showLoading({
+            title: '取消中...',
+            success: (res) => {
+                setTimeout(() => {
+                    wx.hideLoading()
+                    this.onLoad()
+                }, 1000)
+            }
+        })
+
+
+    },
+
+    onOrderPay: function (e) {
+        const orderId = e.currentTarget.dataset.orderid;
+        if (!orderId) return
+        wx.navigateTo({
+            url: `./pay/pay?orderId=${orderId}`,
+        })
     },
 
     onSortChange: function (e) {

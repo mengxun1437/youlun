@@ -5,7 +5,8 @@
     "pages/index/youlun-order/youlun-order",
     "pages/index/youlun-detail/youlun-detail",
     "pages/mine/mine",
-    "pages/mine/points-manage/points-manage"
+    "pages/mine/points-manage/points-manage",
+    "pages/order/pay/pay"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -15,7 +16,7 @@
   },
   "sitemapLocation": "sitemap.json",
   "usingComponents": {
-    "my-swiper":"components/swiper/swiper",
+    "my-swiper": "components/swiper/swiper",
     "van-card": "@vant/weapp/card/index",
     "van-button": "@vant/weapp/button/index",
     "van-tag": "@vant/weapp/tag/index",
