@@ -37,6 +37,8 @@
       </view>
       <span>订单时间</span>
       <view>{{item.showCreated}}</view>
+      <van-button wx:if="{{item.status===0}}" type="danger"  data-orderid="{{item.orderId}}" bind:click="onOrderCancel">取消订单</van-button>
+      <van-button wx:elif="{{item.status===1}}" type="danger"  data-orderid="{{item.orderId}}" bind:click="onOrderPay">前去结账</van-button>
     </van-collapse-item>
   </van-collapse>
 
