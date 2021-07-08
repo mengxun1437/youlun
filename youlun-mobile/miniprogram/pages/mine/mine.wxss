@@ -1,1 +1,87 @@
-/* miniprogram/pages/mine/mine.wxss */
+page{ background: #efecf5;}
+.backgroundImg
+{
+   width: 100%;
+   height:300rpx;
+   z-index: -1;
+   position: fixed;
+ 
+  }
+
+
+
+
+.info_con
+{
+   width: 675rpx; 
+   height:300rpx;
+   margin-top: 100rpx;  
+   margin-left: 37.5rpx;
+   background: #ffffff;
+   border-radius:15rpx; 
+   margin-bottom: 20rpx;
+   z-index: 1;
+   position: fixed;
+}
+
+.info_con1
+{
+   width: 675rpx; 
+   height:180rpx;
+   margin-top: 420rpx;  
+   margin-left: 37.5rpx;
+   background: #ffffff;
+   border-radius:15rpx; 
+   margin-bottom: 20rpx;
+   z-index: 1;
+   position: fixed;
+   color: rgb(163, 158, 158);
+}
+
+
+ 
+.getPhone{
+  z-index: 2;
+  position: fixed;
+  margin-top: 60rpx;
+  margin-left: 270rpx;
+}
+
+.avatar{
+  overflow:hidden;  
+  display: block;  
+  width: 160rpx;  
+  height: 160rpx;  
+  margin: 20rpx;  
+  margin-top: 50rpx;  
+  border-radius: 50%;  
+  border: 2px solid #fff;  
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);  
+  z-index: 2;
+  position: fixed;
+}
+
+.nickName{
+  z-index: 2;
+  position: fixed;
+  margin-top: 70rpx;
+  margin-left: 250rpx;
+}
+
+.points{
+  z-index: 2;
+  position: fixed;
+  font-size: 70%;
+  color: rgb(163, 161, 161);
+  margin-top: 170rpx;
+  margin-left: 250rpx;
+}
+.pointsIcon{
+  margin-left: 10rpx;
+  width: 120rpx;
+  height: 120rpx;
+}
+
+.icon{
+  margin-left: 15rpx;
+}

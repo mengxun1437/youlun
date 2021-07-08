@@ -1,2 +1,24 @@
 <!--miniprogram/pages/mine/mine.wxml-->
-<text>miniprogram/pages/mine/mine.wxml</text>
+<image src="background.webp" class="backgroundImg"> </image>
+
+
+<view class="info_con">
+<view wx:if="{{isLogin == 0}}" class="getPhone">
+   <van-button plain type="info"  open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" >登录</van-button>
+</view>
+<view wx:else>
+<view class="avatar">
+   <open-data type="userAvatarUrl"  ></open-data>
+</view>
+   <open-data type="userNickName" class="nickName"></open-data>
+   <view class="points">积分余额：{{points}}</view>
+</view> 
+</view>
+<view class="info_con1" wx:if="{{isLogin == 1}}" bindtap="points_manage">
+   <van-icon name="gem" class="pointsIcon" size="100rpx"/>
+   <view class="icon">积分管理</view>
+</view>
+
+    
+
+

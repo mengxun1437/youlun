@@ -1,0 +1,27 @@
+
+<view wx:for="{{commoditys}}" wx:key="key" class="card">
+  <van-card 
+  lazy-load="true"
+  currency="积分："
+  title="{{item.commodityName}}"
+  price="{{item.commodityPoint}}"
+  thumb="{{item.commodityUrl}}"
+  >
+
+
+  <view slot="footer">
+    <van-button type="danger" bindtap="pointDecrease" id="{{index}}">积分兑换</van-button>
+    </view>
+  </van-card>
+  <text>\r\n</text>
+</view>
+<van-dialog id="van-dialog" 
+use-slot
+show='{{show}}'
+>
+<image src="{{url}}" class='commodity_img'/>
+
+<text class="commodity_text"><text class="commodity_texts">商品名称：{{name}}\n 兑换积分：{{point}}\n 你的积分：{{points}}</text> </text>
+</van-dialog>
+
+<van-toast id="van-toast" />
