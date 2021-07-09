@@ -816,7 +816,8 @@ App({
         commodityUrl: "https://www.ji9.org/uploads/allimg/201007/3xfrHBZX9x1E9oLA.jpeg?wx_fmt=jpeg",
         commodityName: "船票优惠券￥500",
         commodityPoint: "500",
-      }]
+      }],
+      myCommodities:{}
     }
 
   },

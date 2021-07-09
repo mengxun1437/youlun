@@ -21,7 +21,6 @@ Page({
     this.setData({
       commoditys:commoditys
     })
-    console.log(this.data.commoditys)
   },
 
   getUserInfo(event) {
@@ -54,7 +53,13 @@ Page({
           let lastPoint=this.data.points-this.data.point
           if(lastPoint>=0){
             getApp().globalData.mine.points = lastPoint
-            
+            const myCommodities = getApp().globalData.mine.myCommodities
+            if(myCommodities[e.target.id]){
+              myCommodities[e.target.id] +=1
+            }else{
+              myCommodities[e.target.id]=1
+            }
+            console.log(getApp().globalData.mine.myCommodities)
             wx.switchTab({
               url: '/pages/mine/mine',
               success: function (e) {

@@ -1,7 +1,13 @@
 /* pages/mine/points-manage/points-manage.wxss */
+
 .card{
-  background-color: rgb(224, 222, 218);
+  margin-top: 20rpx;
 }
+
+.card:first-child{
+  margin-top: 0;
+}
+
 .commodity_img{
   height:250rpx;
   width:300rpx;

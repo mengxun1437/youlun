@@ -6,7 +6,9 @@
     "pages/index/youlun-detail/youlun-detail",
     "pages/mine/mine",
     "pages/mine/points-manage/points-manage",
-    "pages/order/pay/pay"
+    "pages/order/pay/pay",
+    "pages/mine/wait-please/wait-please",
+    "pages/mine/my-commodities/my-commodities"
   ],
   "window": {
     "backgroundTextStyle": "light",

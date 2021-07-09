@@ -1,4 +1,4 @@
-page{ background: #efecf5;}
+
 .backgroundImg
 {
    width: 100%;
@@ -38,7 +38,7 @@ page{ background: #efecf5;}
    margin-bottom: 20rpx;
    z-index: 1;
    position: fixed;
-   color: rgb(163, 158, 158);
+   
 }
 
 .info_con2
@@ -55,7 +55,7 @@ page{ background: #efecf5;}
    margin-bottom: 20rpx;
    z-index: 1;
    position: fixed;
-   color: rgb(163, 158, 158);
+   
 }
 
 .info_con3
@@ -72,7 +72,7 @@ page{ background: #efecf5;}
    margin-bottom: 20rpx;
    z-index: 1;
    position: fixed;
-   color: rgb(163, 158, 158);
+  
 }
 
 
@@ -82,7 +82,9 @@ page{ background: #efecf5;}
   position: fixed;
   margin-top: 100rpx;
   margin-left: 270rpx;
+  
 }
+
 
 .avatar{
   overflow:hidden;  
@@ -109,11 +111,12 @@ page{ background: #efecf5;}
   z-index: 2;
   position: fixed;
   font-size: 70%;
-  color: rgb(163, 161, 161);
+ 
   margin-top: 170rpx;
   margin-left: 250rpx;
 }
 .pointsIcon{
+  color: rgb(163, 161, 161);
   margin-left: 10rpx;
   width: 120rpx;
   height: 120rpx;

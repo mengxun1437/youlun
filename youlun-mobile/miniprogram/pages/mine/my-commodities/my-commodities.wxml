@@ -1,0 +1,16 @@
+<!--pages/mine/my-commodities/my-commodities.wxml-->
+<view wx:if="{{commodityLength == 0}}">
+<text>你还没有购买任何物品!</text>
+</view>
+<view wx:else>
+  <view wx:for="{{shoppingCards}}" wx:key="key" class="card">
+  <van-card 
+  lazy-load="true"
+  currency="购买数量："
+  title="{{item.name}}"
+  price="{{item.num}}"
+  thumb="{{item.url}}"
+  >
+  </van-card>
+</view>
+</view>
