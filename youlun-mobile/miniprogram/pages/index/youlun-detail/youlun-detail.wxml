@@ -1,8 +1,10 @@
 <!--miniprogram/pages/index/youlun-detail/youlun-detail.wxml-->
 <view class="youlun-detail-container">
   <my-swiper imageList="{{swiperImageList}}"></my-swiper>
-
-    <view class="room">
+  <view class="loading" wx:if="{{showLoading}}">
+    <van-loading  color="#1989fa" />
+  </view>
+    <view wx:else class="room">
       <van-tabs animated>
         <van-tab wx:for="{{rooms}}" wx:key="index" title="{{item.type}}">
           <view class="content">
