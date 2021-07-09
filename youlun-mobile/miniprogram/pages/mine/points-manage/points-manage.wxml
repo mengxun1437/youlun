@@ -13,7 +13,6 @@
     <van-button type="danger" bindtap="pointDecrease" id="{{index}}">积分兑换</van-button>
     </view>
   </van-card>
-  <text>\r\n</text>
 </view>
 <van-dialog id="van-dialog" 
 use-slot

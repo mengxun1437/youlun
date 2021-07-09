@@ -1,3 +1,5 @@
+const { default: toast } = require("../../miniprogram_npm/@vant/weapp/toast/toast");
+import Toast from '@vant/weapp/toast/toast'
 var app=getApp()
 var globalPoints=app.globalData.mine.points
 Page({
@@ -57,7 +59,21 @@ Page({
         wx.navigateTo({
           url: '/pages/mine/points-manage/points-manage',
         })
-    }
+    },
 
+    loginPlease:function(){
+        Toast.fail('请先登录再使用功能')
+    },
+
+    waitPlease:function(){
+        wx.navigateTo({
+          url: '/pages/mine/wait-please/wait-please',
+        })
+    },
+    shoppingCard:function(){
+        wx.navigateTo({
+          url: '/pages/mine/my-commodities/my-commodities',
+        })
+    }
 
 });
