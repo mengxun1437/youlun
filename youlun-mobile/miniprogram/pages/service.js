@@ -33,7 +33,7 @@ const getAllCuriseInfo =(curiseId) => new Promise((resolve,reject)=>{
 
 const getRoomInfoByCuriseId = (curiseId) => new Promise((resolve,reject)=>{
   wx.request({
-    url:`${baseURL}/rooms/${curiseId}`,
+    url:`${baseURL}/rooms/${curiseId}`, 
     method:"GET",
     header:header,
     success(res){
@@ -47,7 +47,7 @@ const getRoomInfoByCuriseId = (curiseId) => new Promise((resolve,reject)=>{
 
 const getRoomDetailId = (curiseId,roomId) => new Promise((resolve,reject)=>{
   wx.request({
-    url:`${baseURL}/rooms/?curiseId=${curiseId}&roomId=${roomId}`,
+    url:`${baseURL}/rooms/getRoomListByCuriseId?curiseId=${curiseId}&roomId=${roomId}`,
     method:"GET",
     header:header,
     success(res){
