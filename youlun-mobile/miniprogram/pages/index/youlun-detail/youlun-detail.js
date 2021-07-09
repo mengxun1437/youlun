@@ -1,5 +1,11 @@
 import {
-  getWayInfo
+  getAllCuriseInfo,
+  getRoomInfoByCuriseId
+} from "../../service";
+import {
+  groupArray,
+  RoomType,
+  showErrorTip
 } from "../../utils";
 Page({
   /**
@@ -12,18 +18,47 @@ Page({
     rooms: []
   },
 
-  onLoad: function (options) {
-    const wayInfo = getWayInfo(options.wayId)
-    this.setData({
-      swiperImageList: [wayInfo.youlunSrc]
+  onShow() {
+    this.renderData()
+  },
+
+  renderData() {
+    getAllCuriseInfo(this.data.options.wayId).then(res => {
+      if (res.data.code === 0) {
+        this.setData({
+          swiperImageList: [res.data.data.imageUrl],
+        })
+      } else {
+        showErrorTip("图片加载失败")
+      }
+    }, error => {
+      showErrorTip("图片加载失败")
     })
-    setTimeout(() => {
+
+    getRoomInfoByCuriseId(this.data.options.wayId).then(res => {
+      const rooms = res.data.data.map(room => ({
+        roomId: room.id,
+        name: room.roomName,
+        area:room.area,
+        hasFloor: room.hasFloor,
+        price: room.price,
+        src: room.roomImage,
+        peopleNum: room.peopleNum,
+        type:RoomType[room.roomType]
+      }))
       this.setData({
-        options,
-        rooms: wayInfo.rooms,
+        rooms:groupArray(rooms,'type',['type','list']),
         showLoading:false
-      });
-    }, 1000)
+      })
+    }, err => {
+      showErrorTip("房间数据加载失败")
+    })
+  },
+
+  onLoad: function (options) {
+    this.setData({
+      options
+    })
   },
 
 

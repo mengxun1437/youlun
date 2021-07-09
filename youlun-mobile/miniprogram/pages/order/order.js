@@ -1,7 +1,12 @@
 import {
-    getRoomInfo,
-    getWayInfo
-} from "../utils";
+    cancelOrder,
+    getAllCuriseInfo,
+    getRoomDetailId,
+    getUserAllOrderList
+} from '../service'
+import {
+    showErrorTip
+} from '../utils'
 const app = getApp()
 
 Page({
@@ -35,56 +40,84 @@ Page({
         showOrders: [],
         orders: []
     },
-    onLoad: function () {
-        const orderList = app.globalData.orderList.map(order => {
-            const wayInfo = getWayInfo(order.wayId);
-            const roomInfo = getRoomInfo(order.wayId, order.roomId);
-            const date = new Date(order.created);
-            const dateFormat = `${date.getFullYear()}-${(date.getMonth() + 1).toString().padStart(2,'0')}-${date.getDate().toString().padStart(2,'0')} ${date.getHours().toString().padStart(2,'0')}:${date.getMinutes().toString().padStart(2,'0')}:${date.getSeconds().toString().padStart(2,'0')}`
-            return {
-                orderId: order.orderId,
-                status: order.status,
-                way: {
-                    name: wayInfo.name,
-                    youlun: wayInfo.youlun,
-                    duration: wayInfo.duration,
-                    start: wayInfo.start,
-                },
-                room: {
-                    name: roomInfo.name,
-                    price: roomInfo.price,
-                    users: order.users.map(user => user.userName),
-                },
-                created: order.created,
-                showCreated: dateFormat
+
+    onShow() {
+        this.renderData()
+    },
+
+    renderData() {
+        if (!app.globalData.openId) {
+            return
+        }
+        getUserAllOrderList(app.globalData.openId).then(res => {
+            if (res.data.code === 0) {
+                let list = []
+                this.setData({
+                    orders:[],
+                    showOrders:[]
+                })
+                res.data.data.map((order) => {
+                    const promise1 = getAllCuriseInfo(order.curiseId);
+                    const promise2 = getRoomDetailId(order.curiseId, order.roomId);
+                    Promise.all([promise1, promise2]).then((res) => {
+                        let curiseInfo = res[0].data.data
+                        let roomInfo = res[1].data.data
+                        const date = new Date(order.created);
+                        const dateFormat = `${date.getFullYear()}-${(date.getMonth() + 1).toString().padStart(2,'0')}-${date.getDate().toString().padStart(2,'0')} ${date.getHours().toString().padStart(2,'0')}:${date.getMinutes().toString().padStart(2,'0')}:${date.getSeconds().toString().padStart(2,'0')}`
+                        const data =   {
+                            orderId: order.id,
+                            status: order.orderStatus,
+                            way: {
+                                name: curiseInfo.lane,
+                                youlun: curiseInfo.name,
+                                duration: curiseInfo.duration,
+                                start: curiseInfo.start,
+                            },
+                            room: {
+                                name: roomInfo.roomName,
+                                price: roomInfo.price,
+                                users: order.users.split('-'),
+                            },
+                            created: order.created,
+                            showCreated: dateFormat
+                        }
+                        list.push(data)
+                    }).then(()=>{
+                        this.setData({
+                            orders:list.reverse(),
+                            showOrders:list.reverse()
+                        })
+                    })
+                })
+            } else {
+                showErrorTip("加载订单错误")
             }
-        }).reverse()
-        this.setData({
-            showOrders: orderList,
-            orders: orderList
+        }, err => {
+            showErrorTip("加载订单错误")
         })
     },
 
+    onLoad: function () {
+        this.renderData()
+    },
+
     onShow() {
-        this.onLoad()
+        this.renderData()
     },
 
     onOrderCancel: function (e) {
         const orderId = e.currentTarget.dataset.orderid;
         if (!orderId) return
-        app.globalData.orderList.splice(app.globalData.orderList.findIndex(item => item.orderId === orderId), 1)
-
-        wx.showLoading({
-            title: '取消中...',
-            success: (res) => {
-                setTimeout(() => {
-                    wx.hideLoading()
-                    this.onLoad()
-                }, 1000)
+        cancelOrder(orderId).then(res=>{
+            if(res.data.code === 0){
+                showErrorTip("取消订单成功");
+                this.renderData()
+            }else{
+                showErrorTip("取消订单失败")
             }
+        },err=>{
+            showErrorTip("取消订单失败")
         })
-
-
     },
 
     onOrderPay: function (e) {

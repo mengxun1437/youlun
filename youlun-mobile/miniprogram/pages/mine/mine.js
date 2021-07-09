@@ -1,18 +1,35 @@
-const { default: toast } = require("../../miniprogram_npm/@vant/weapp/toast/toast");
 import Toast from '@vant/weapp/toast/toast'
-var app=getApp()
-var globalPoints=app.globalData.mine.points
+import { showErrorTip } from '../utils';
+import {getUserOpenId} from '../service'
+const app = getApp()
 Page({
     data: {
+        openId:'',
         isLogin:0,
         points:1000
     },
+
+    onShow(){
+        this.onLoad()
+    },
+
     onLoad: function () {
 
         let point = getApp().globalData.mine.points
+        let _this = this
         wx.login({
-            success:res=>{
+            success(res){
                 console.log(res)
+                getUserOpenId(res.code).then(res=>{
+                    console.log(res)
+                    if(res.data.code === 0){
+                        _this.setData({
+                            openId:res.data.data.openId
+                        })
+                    }else{
+                        showErrorTip("获取用户openId失败")
+                    }
+                })
             }
         }),
 
@@ -21,20 +38,7 @@ Page({
             points:point
         })
     },
-    onReady: function () {
-    },
-    onShow: function () {
-    },
-    onHide: function () {
-    },
-    onUnload: function () {
-    },
-    onPullDownRefresh: function () {
-    },
-    onReachBottom: function () {
-    },
-    onShareAppMessage: function () {
-    },
+
     //通过绑定手机号登录
 　　getPhoneNumber: function (e) {
     console.log(e)
@@ -49,6 +53,7 @@ Page({
         this.setData({
             isLogin:1
         })
+        app.globalData.openId = this.data.openId
         wx.switchTab({
          url: '/pages/mine/mine',
         })
