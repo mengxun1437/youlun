@@ -3,7 +3,7 @@
 }
 .contrainer .loading {
   position: absolute;
-  top: 600rpx;
+  margin-top: 100rpx;
   left: 50%;
   transform: translate(-50%);
 }
