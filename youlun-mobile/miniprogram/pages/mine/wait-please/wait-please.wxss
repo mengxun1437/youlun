@@ -1,0 +1,6 @@
+/* pages/mine/wait-please/wait-please.wxss */
+.text{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

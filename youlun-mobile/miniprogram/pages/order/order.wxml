@@ -1,0 +1,45 @@
+<!--miniprogram/pages/order/order.wxml-->
+<view>
+  <van-dropdown-menu>
+    <van-dropdown-item value="{{ sortIndex }}" options="{{ sort }}" bind:change="onSortChange" />
+    <van-dropdown-item id="item" title="{{ itemTitle }}">
+      <van-cell title="{{ item.title }}" wx:for="{{switchs}}" wx:key="index">
+        <van-switch data-index="{{index}}" slot="right-icon" size="24px" style="height: 26px"
+          checked="{{ item.status }}" active-color="#ee0a24" bind:change="onSwitchChange" />
+      </van-cell>
+      <view style="padding: 5px 16px;">
+        <van-button type="danger" block round bind:click="onConfirm">
+          确认
+        </van-button>
+      </view>
+    </van-dropdown-item>
+  </van-dropdown-menu>
+  <van-collapse accordion value="{{ activeName }}" bind:change="onOrderChange">
+    <van-collapse-item icon="{{orderStatusIcons[item.status]}}" wx:for="{{showOrders}}" wx:key="index"
+      title="{{item.way.name}}" name="{{index+1}}">
+      <span>订单ID</span>
+      <view>{{item.orderId}}</view>
+      <span>邮轮</span>
+      <view>{{item.way.youlun}}</view>
+      <span>出发时间</span>
+      <view>{{item.way.start}}</view>
+      <span>航程</span>
+      <view>{{item.way.duration}}</view>
+      <span>房间号</span>
+      <view>{{item.room.name}}</view>
+      <span>价格</span>
+      <view>{{item.room.price}}元</view>
+      <span>住户</span>
+      <view class="users">
+      <view wx:for="{{item.room.users}}" wx:key="index" class="user">
+        {{item}}
+      </view>
+      </view>
+      <span>订单时间</span>
+      <view>{{item.showCreated}}</view>
+      <van-button wx:if="{{item.status===0}}" type="danger"  data-orderid="{{item.orderId}}" bind:click="onOrderCancel">取消订单</van-button>
+      <van-button wx:elif="{{item.status===1}}" type="danger"  data-orderid="{{item.orderId}}" bind:click="onOrderPay">前去结账</van-button>
+    </van-collapse-item>
+  </van-collapse>
+
+</view>

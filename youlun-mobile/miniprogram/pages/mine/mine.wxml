@@ -1,0 +1,54 @@
+<!--miniprogram/pages/mine/mine.wxml-->
+<image src="background.webp" class="backgroundImg"> </image>
+
+
+<view class="info_con">
+<view wx:if="{{isLogin == 0}}" class="getPhone">
+   <van-button  open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" color="linear-gradient(to right, rgb(255, 96, 52), rgb(238, 10, 36))">登录</van-button>
+</view>
+<view wx:else>
+<view class="avatar">
+   <open-data type="userAvatarUrl"  ></open-data>
+</view>
+   <open-data type="userNickName" class="nickName"></open-data>
+   <view class="points">积分余额：{{points}}</view>
+</view> 
+</view>
+
+<view wx:if="{{isLogin == 1}}">
+   <view class="info_con1"  bindtap="points_manage">
+      <van-icon name="gem" class="pointsIcon" size="60rpx"/>
+      <view class="icon">积分管理</view>
+   </view>
+
+   <view class="info_con2" bindtap="shoppingCard">
+      <van-icon name="shopping-cart" class="pointsIcon" size="60rpx"/>
+      <view class="icon">我的购物</view>
+   </view>
+
+   <view class="info_con3" bindtap="waitPlease">
+      <van-icon name="coupon" class="pointsIcon" size="60rpx"/>
+      <view class="icon">我的优惠</view>
+   </view>
+</view>
+
+<view wx:else>
+   <view class="info_con1" bindtap="loginPlease">
+      <van-icon name="gem" class="pointsIcon" size="60rpx"/>
+      <view class="icon">积分管理</view>
+   </view>
+
+   <view class="info_con2" bindtap="loginPlease">
+      <van-icon name="shopping-cart" class="pointsIcon" size="60rpx"/>
+      <view class="icon">我的购物</view>
+   </view>
+
+   <view class="info_con3" bindtap="loginPlease">
+      <van-icon name="coupon" class="pointsIcon" size="60rpx"/>
+      <view class="icon">我的优惠</view>
+   </view>
+</view>
+
+    
+
+<van-toast id="van-toast" />

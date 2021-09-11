@@ -1,4 +1,6 @@
 // {{page}}.ts
+var app = getApp()
+var 
 Page({
 
   /**

@@ -1,0 +1,27 @@
+/* pages/mine/points-manage/points-manage.wxss */
+
+.card{
+  margin-top: 20rpx;
+}
+
+.card:first-child{
+  margin-top: 0;
+}
+
+.commodity_img{
+  height:250rpx;
+  width:300rpx;
+  margin-left: 25%;
+ 
+}
+.commodity_text{
+  display: block;
+  text-align: center;
+ 
+  color: rgb(175, 177, 180);
+}
+.commodity_texts{
+  display: inline-block;
+  text-align:left;
+  color: rgb(175, 177, 180);
+}

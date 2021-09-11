@@ -21,11 +21,11 @@
     "minified": true,
     "newFeature": false,
     "coverView": true,
-    "nodeModules": true,
+    "nodeModules": false,
     "autoAudits": false,
     "showShadowRootInWxmlPanel": true,
     "scopeDataCheck": false,
-    "uglifyFileName": false,
+    "uglifyFileName": true,
     "checkInvalidKey": true,
     "checkSiteMap": true,
     "uploadWithSourceMap": true,
@@ -54,6 +54,6 @@
   },
   "simulatorType": "wechat",
   "simulatorPluginLibVersion": {},
-  "appid": "wx22a575ee5cd0107f",
+  "appid": "wx6a0d19e2490d51d5",
   "condition": {}
 }

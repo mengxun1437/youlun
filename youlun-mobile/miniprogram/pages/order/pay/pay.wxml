@@ -1,0 +1,8 @@
+<!--{{page}}.wxml-->
+<view>
+<view>
+  该功能需要调用微信支付，暂未实现...
+</view>
+<view>待支付订单ID：{{orderId}}</view>
+</view>
+
